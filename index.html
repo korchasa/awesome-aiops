@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+    <meta name="keywords" content="AIOps, Artificial Intelligence for IT Operations, MLOps, DevOps AI, Intelligent Operations, Predictive Monitoring, AI Monitoring">
+    <meta name="author" content="Awesome AIOps Contributors">
+    <meta property="og:title" content="Awesome AIOps">
+    <meta property="og:description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://awesome-aiops.korchasa.dev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Awesome AIOps">
+    <meta name="twitter:description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon and mobile icons -->
+    <link rel="icon" href="https://awesome-aiops.korchasa.dev/favicon.ico" sizes="any">
+    <link rel="icon" href="https://awesome-aiops.korchasa.dev/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="https://awesome-aiops.korchasa.dev/apple-touch-icon.png">
+    <link rel="manifest" href="https://awesome-aiops.korchasa.dev/manifest.webmanifest">
+    <meta name="theme-color" content="#1f77b4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <title>Awesome AIOps</title>
+    <style>
+        body {
+            font-family: 'JetBrains Mono', 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin: 2rem 0 1.2rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 1rem 0 2rem;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 2em;
+            margin: 2.5rem 0 1.5rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-size: 1.25em;
+            margin: 2rem 0 1rem;
+        }
+        h4 {
+            font-size: 1em;
+            margin: 1.5rem 0 0.8rem;
+        }
+        p {
+            margin: 0 0 1.5rem;
+            max-width: 85ch;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+        }
+        li {
+            margin: 1rem 0;
+            padding-left: 1em;
+            position: relative;
+            line-height: 1.6;
+        }
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0366d6;
+        }
+        a {
+            color: #1f77b4;
+            text-decoration: none;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s ease;
+        }
+        a:hover {
+            border-bottom-color: #1f77b4;
+            text-decoration: none;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            margin: 2.5rem 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .license {
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .stars {
+            color: #4d88ff;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+        .language {
+            color: #6a737d;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-right: 8px;
+            margin-left: 3px;
+            background-color: #f1f1f1;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 50px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header, nav, main, footer {
+            margin-bottom: 3rem;
+            padding: 0 15px;
+        }
+        section {
+            padding-bottom: 1rem;
+        }
+        section + section {
+            border-top: 1px dashed #eee;
+            padding-top: 1.5rem;
+        }
+        /* More compact TOC */
+        nav ul li {
+            margin: 0.3rem 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        /* Nested TOC elements */
+        nav ul ul {
+            margin: 0.3rem 0 0.3rem 0.8rem;
+        }
+        /* Style for item count in TOC */
+        nav ul li span {
+            color: #666;
+            font-size: 0.85em;
+        }
+        main ul li:hover {
+            border-left-color: #007acc;
+            background: #f5f9ff;
+        }
+        /* Styles for static menu */
+        .main-menu {
+            margin-bottom: 1rem;
+        }
+        .main-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        .main-menu li {
+            margin: 0;
+        }
+        .main-menu a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .main-menu a:hover {
+            text-decoration: underline;
+        }
+        /* Styles for back to TOC link */
+        .back-to-toc {
+            text-align: right;
+            font-size: 0.85em;
+            margin-top: 1rem;
+        }
+        .back-to-toc a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .back-to-toc a:hover {
+            text-decoration: underline;
+        }
+        /* Visually hidden (for accessibility) */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Awesome AIOps",
+        "description": "A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Awesome AIOps Contributors"
+        },
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "about": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "AIOps Platforms & Frameworks"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Observability & Monitoring"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Automation & Orchestration"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header role="banner">
+            <h1 id="awesome-aiops">Awesome AIOps</h1>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="https://github.com/korchasa/awesome-aiops">GitHub</a></li>
+                </ul>
+            </nav>
+            <div class="note" role="note" aria-label="Important note about this repository">
+                <strong>Note:</strong> This repository contains an automatically compiled list of frameworks, tools, and resources related to AIOps (Artificial Intelligence for IT Operations).
+            </div>
+            <div>
+                A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+
+            </div>
+
+            <!-- Site-wide search bar -->
+            <form id="search-form" role="search" aria-label="Search across projects" style="margin-top:1.5rem;">
+                <label for="search-input" class="visually-hidden">Search</label>
+                <input type="search" id="search-input" placeholder="Search projects…" style="width:100%;padding:0.6rem 1rem;font-size:1rem;border:1px solid #d1d5da;border-radius:4px;" autocomplete="off">
+            </form>
+            <div id="search-results" aria-live="polite" style="margin-top:1.5rem;"></div>
+        </header>
+
+        <nav role="navigation" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">Table of Contents</h2><ul>
+                <li style="margin-left: 0px;">
+                    <a href="#aiops-platforms-&-frameworks" aria-label="Go to AIOps Platforms & Frameworks section">AIOps Platforms & Frameworks</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#full-stack-aiops-platforms" aria-label="Go to Full-Stack AIOps Platforms section">Full-Stack AIOps Platforms</a> <span aria-label="3 items">(3)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#intelligent-monitoring-systems" aria-label="Go to Intelligent Monitoring Systems section">Intelligent Monitoring Systems</a> <span aria-label="3 items">(3)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#observability-&-monitoring" aria-label="Go to Observability & Monitoring section">Observability & Monitoring</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#log-analysis-&-intelligence" aria-label="Go to Log Analysis & Intelligence section">Log Analysis & Intelligence</a> <span aria-label="4 items">(4)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#automation-&-orchestration" aria-label="Go to Automation & Orchestration section">Automation & Orchestration</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#self-healing-systems" aria-label="Go to Self-Healing Systems section">Self-Healing Systems</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#data-&-analytics" aria-label="Go to Data & Analytics section">Data & Analytics</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#root-cause-analysis" aria-label="Go to Root Cause Analysis section">Root Cause Analysis</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#anomaly-detection" aria-label="Go to Anomaly Detection section">Anomaly Detection</a> <span aria-label="4 items">(4)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#devops-ai-integration" aria-label="Go to DevOps AI Integration section">DevOps AI Integration</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#testing-intelligence" aria-label="Go to Testing Intelligence section">Testing Intelligence</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#cloud-&-infrastructure-ai" aria-label="Go to Cloud & Infrastructure AI section">Cloud & Infrastructure AI</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#container-intelligence" aria-label="Go to Container Intelligence section">Container Intelligence</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#tools-&-utilities" aria-label="Go to Tools & Utilities section">Tools & Utilities</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#ai-libraries-&-sdks" aria-label="Go to AI Libraries & SDKs section">AI Libraries & SDKs</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#data-connectors" aria-label="Go to Data Connectors section">Data Connectors</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#visualization-&-dashboards" aria-label="Go to Visualization & Dashboards section">Visualization & Dashboards</a> <span aria-label="2 items">(2)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#educational-resources" aria-label="Go to Educational Resources section">Educational Resources</a> <span aria-label="5 items">(5)</span>
+                    </li>
+            </ul>
+        </nav>
+
+        <main role="main">
+            <section aria-labelledby="aiops-platforms-&-frameworks"><h2 id="aiops-platforms-&-frameworks">AIOps Platforms & Frameworks</h2>
+                
+                
+            <section aria-labelledby="full-stack-aiops-platforms"><h3 id="full-stack-aiops-platforms">Full-Stack AIOps Platforms</h3>
+                <ul aria-label="List of Full-Stack AIOps Platforms items">
+                    <li>
+                        <a href="https://github.com/centreon/centreon" aria-label="centreon/centreon - 139 stars, PHP" target="_blank" rel="noopener">centreon/centreon</a>
+                        <span class="stars" aria-hidden="true">⭐ 139</span>
+                        <span class="language" aria-hidden="true">PHP</span> -
+                        <span>Centreon is an AIOps-powered, open-source monitoring platform that delivers holistic visibility and intelligent automation for IT workflows across cloud, on-premises, and edge environments.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/keephq/keep" aria-label="keephq/keep - 11086 stars, Python" target="_blank" rel="noopener">keephq/keep</a>
+                        <span class="stars" aria-hidden="true">⭐ 11086</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Keep is an open-source AIOps and alert management platform that provides AI-powered alert deduplication, correlation, enrichment, and automation with deep integrations across monitoring and observability tools.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/microsoft/AIOpsLab" aria-label="microsoft/AIOpsLab - 770 stars, Python" target="_blank" rel="noopener">microsoft/AIOpsLab</a>
+                        <span class="stars" aria-hidden="true">⭐ 770</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>AIOpsLab is a scalable, reproducible framework for designing, deploying, and evaluating autonomous AI agents in realistic cloud-native operational environments with built-in benchmarking and telemetry.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="intelligent-monitoring-systems"><h3 id="intelligent-monitoring-systems">Intelligent Monitoring Systems</h3>
+                <ul aria-label="List of Intelligent Monitoring Systems items">
+                    <li>
+                        <a href="https://github.com/Arize-ai/phoenix" aria-label="Arize-ai/phoenix - 8064 stars, Jupyter Notebook" target="_blank" rel="noopener">Arize-ai/phoenix</a>
+                        <span class="stars" aria-hidden="true">⭐ 8064</span>
+                        <span class="language" aria-hidden="true">Jupyter Notebook</span> -
+                        <span>Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language models with broad framework and provider support.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lmnr-ai/lmnr" aria-label="lmnr-ai/lmnr - 2488 stars, TypeScript" target="_blank" rel="noopener">lmnr-ai/lmnr</a>
+                        <span class="stars" aria-hidden="true">⭐ 2488</span>
+                        <span class="language" aria-hidden="true">TypeScript</span> -
+                        <span>Laminar is an open-source platform for tracing, evaluating, and managing AI applications, providing comprehensive observability and data management tools to optimize AI product engineering and monitoring.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/truera/trulens" aria-label="truera/trulens - 3001 stars, Python" target="_blank" rel="noopener">truera/trulens</a>
+                        <span class="stars" aria-hidden="true">⭐ 3001</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents, enabling developers to identify failure modes and iteratively improve their applications with comprehensive feedback and instrumentation.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="observability-&-monitoring"><h2 id="observability-&-monitoring">Observability & Monitoring</h2>
+                
+                
+            <section aria-labelledby="log-analysis-&-intelligence"><h3 id="log-analysis-&-intelligence">Log Analysis & Intelligence</h3>
+                <ul aria-label="List of Log Analysis & Intelligence items">
+                    <li>
+                        <a href="https://github.com/CloudWise-OpenSource/GAIA-DataSet" aria-label="CloudWise-OpenSource/GAIA-DataSet - 255 stars, " target="_blank" rel="noopener">CloudWise-OpenSource/GAIA-DataSet</a>
+                        <span class="stars" aria-hidden="true">⭐ 255</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>GAIA is a large-scale, labeled AIOps dataset enabling research in anomaly detection, log analysis, and fault localization using real-world metric, trace, and log data with simulated faults.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/awesome-log-analysis" aria-label="logpai/awesome-log-analysis - 785 stars, " target="_blank" rel="noopener">logpai/awesome-log-analysis</a>
+                        <span class="stars" aria-hidden="true">⭐ 785</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated academic resource listing key researchers, conferences, datasets, and papers advancing log analysis, anomaly detection, and AIOps for intelligent IT operations.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/loglizer" aria-label="logpai/loglizer - 1394 stars, Jupyter Notebook" target="_blank" rel="noopener">logpai/loglizer</a>
+                        <span class="stars" aria-hidden="true">⭐ 1394</span>
+                        <span class="language" aria-hidden="true">Jupyter Notebook</span> -
+                        <span>Loglizer is an open-source machine learning toolkit for automated anomaly detection in system logs, enabling intelligent fault diagnosis and proactive IT operations through structured log analysis and diverse AI models.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/salesforce/logai" aria-label="salesforce/logai - 754 stars, Python" target="_blank" rel="noopener">salesforce/logai</a>
+                        <span class="stars" aria-hidden="true">⭐ 754</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>LogAI is an open-source AIOps library that provides end-to-end log analytics capabilities—including automated parsing, clustering, summarization, and anomaly detection—with a unified interface and interactive GUI for AI-powered IT operations monitoring.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="automation-&-orchestration"><h2 id="automation-&-orchestration">Automation & Orchestration</h2>
+                
+                
+            <section aria-labelledby="self-healing-systems"><h3 id="self-healing-systems">Self-Healing Systems</h3>
+                <ul aria-label="List of Self-Healing Systems items">
+                    <li>
+                        <a href="https://github.com/keikoproj/active-monitor" aria-label="keikoproj/active-monitor - 181 stars, Go" target="_blank" rel="noopener">keikoproj/active-monitor</a>
+                        <span class="stars" aria-hidden="true">⭐ 181</span>
+                        <span class="language" aria-hidden="true">Go</span> -
+                        <span>Active-Monitor is an AIOps tool for Kubernetes that enables automated, workflow-driven health monitoring and self-healing using Argo Workflows.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="data-&-analytics"><h2 id="data-&-analytics">Data & Analytics</h2>
+                
+                
+            <section aria-labelledby="root-cause-analysis"><h3 id="root-cause-analysis">Root Cause Analysis</h3>
+                <ul aria-label="List of Root Cause Analysis items">
+                    <li>
+                        <a href="https://github.com/HolmesGPT/holmesgpt" aria-label="HolmesGPT/holmesgpt - 1593 stars, Python" target="_blank" rel="noopener">HolmesGPT/holmesgpt</a>
+                        <span class="stars" aria-hidden="true">⭐ 1593</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to perform root cause analysis and automate remediation workflows.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="anomaly-detection"><h3 id="anomaly-detection">Anomaly Detection</h3>
+                <ul aria-label="List of Anomaly Detection items">
+                    <li>
+                        <a href="https://github.com/d0ng1ee/logdeep" aria-label="d0ng1ee/logdeep - 451 stars, Python" target="_blank" rel="noopener">d0ng1ee/logdeep</a>
+                        <span class="stars" aria-hidden="true">⭐ 451</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>LogDeep is an AI-powered, open-source deep learning toolkit for automated anomaly detection in system logs, integrating state-of-the-art models like DeepLog, LogAnomaly, and RobustLog to enable intelligent, scalable monitoring in AIOps environments.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/jixinpu/aiopstools" aria-label="jixinpu/aiopstools - 399 stars, Python" target="_blank" rel="noopener">jixinpu/aiopstools</a>
+                        <span class="stars" aria-hidden="true">⭐ 399</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>aiopstools is a Python toolkit that implements core AIOps functions—including anomaly detection, alarm convergence, time series forecasting, and alarm association analysis—to automate and enhance IT operations monitoring.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/Drain3" aria-label="logpai/Drain3 - 722 stars, Python" target="_blank" rel="noopener">logpai/Drain3</a>
+                        <span class="stars" aria-hidden="true">⭐ 722</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Drain3 is an AI-powered, streaming log template miner that enables real-time log clustering and parameter extraction for AIOps and DevOps monitoring systems.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/Log3C" aria-label="logpai/Log3C - 176 stars, Python" target="_blank" rel="noopener">logpai/Log3C</a>
+                        <span class="stars" aria-hidden="true">⭐ 176</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Log3C is an AI-driven framework that identifies critical system problems by correlating structured log sequences with KPI metrics using cascading clustering and machine learning.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="devops-ai-integration"><h2 id="devops-ai-integration">DevOps AI Integration</h2>
+                
+                
+            <section aria-labelledby="testing-intelligence"><h3 id="testing-intelligence">Testing Intelligence</h3>
+                <ul aria-label="List of Testing Intelligence items">
+                    <li>
+                        <a href="https://github.com/athina-ai/athina-sdk" aria-label="athina-ai/athina-sdk - 131 stars, Python" target="_blank" rel="noopener">athina-ai/athina-sdk</a>
+                        <span class="stars" aria-hidden="true">⭐ 131</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Athina SDK is an AI-powered testing and monitoring platform that enables teams to evaluate, observe, and improve the reliability of LLM applications in production through automated, customizable evaluations.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="cloud-&-infrastructure-ai"><h2 id="cloud-&-infrastructure-ai">Cloud & Infrastructure AI</h2>
+                
+                
+            <section aria-labelledby="container-intelligence"><h3 id="container-intelligence">Container Intelligence</h3>
+                <ul aria-label="List of Container Intelligence items">
+                    <li>
+                        <a href="https://github.com/SeldonIO/seldon-core" aria-label="SeldonIO/seldon-core - 4704 stars, Go" target="_blank" rel="noopener">SeldonIO/seldon-core</a>
+                        <span class="stars" aria-hidden="true">⭐ 4704</span>
+                        <span class="language" aria-hidden="true">Go</span> -
+                        <span>Seldon Core is an MLOps and LLMOps framework for deploying, managing, and scaling AI systems and machine learning models in Kubernetes environments, supporting modular pipelines, autoscaling, multi-model serving, and custom components for production-ready AI applications.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="tools-&-utilities"><h2 id="tools-&-utilities">Tools & Utilities</h2>
+                
+                
+            <section aria-labelledby="ai-libraries-&-sdks"><h3 id="ai-libraries-&-sdks">AI Libraries & SDKs</h3>
+                <ul aria-label="List of AI Libraries & SDKs items">
+                    <li>
+                        <a href="https://github.com/Arize-ai/openinference" aria-label="Arize-ai/openinference - 783 stars, Python" target="_blank" rel="noopener">Arize-ai/openinference</a>
+                        <span class="stars" aria-hidden="true">⭐ 783</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>OpenInference is an open standard for AI observability that enables OpenTelemetry-based tracing of LLM applications and their surrounding context to improve monitoring, debugging, and operational reliability in MLOps workflows.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="data-connectors"><h3 id="data-connectors">Data Connectors</h3>
+                <ul aria-label="List of Data Connectors items">
+                    <li>
+                        <a href="https://github.com/IBM/cloud-pak-deployer" aria-label="IBM/cloud-pak-deployer - 152 stars, Jinja" target="_blank" rel="noopener">IBM/cloud-pak-deployer</a>
+                        <span class="stars" aria-hidden="true">⭐ 152</span>
+                        <span class="language" aria-hidden="true">Jinja</span> -
+                        <span>The IBM Cloud Pak Deployer is a GitOps-based automation tool that simplifies the deployment and continuous management of OpenShift and IBM Cloud Paks—including Watson AIOps—across hybrid and multi-cloud environments using declarative configuration.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="visualization-&-dashboards"><h3 id="visualization-&-dashboards">Visualization & Dashboards</h3>
+                <ul aria-label="List of Visualization & Dashboards items">
+                    <li>
+                        <a href="https://github.com/evilmartians/agent-prism" aria-label="evilmartians/agent-prism - 264 stars, TypeScript" target="_blank" rel="noopener">evilmartians/agent-prism</a>
+                        <span class="stars" aria-hidden="true">⭐ 264</span>
+                        <span class="language" aria-hidden="true">TypeScript</span> -
+                        <span>AgentPrism is a React-based visualization library for debugging AI agent traces by converting OpenTelemetry and Langfuse data into interactive hierarchical timelines.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/onepanelio/onepanel" aria-label="onepanelio/onepanel - 732 stars, Go" target="_blank" rel="noopener">onepanelio/onepanel</a>
+                        <span class="stars" aria-hidden="true">⭐ 732</span>
+                        <span class="language" aria-hidden="true">Go</span> -
+                        <span>OnePanel is an open-source, cloud-native MLOps platform that unifies data labeling, model training, tuning, deployment, and automation for computer vision applications across cloud and on-premises environments.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="educational-resources"><h2 id="educational-resources">Educational Resources</h2>
+                <ul aria-label="List of Educational Resources items">
+                    <li>
+                        <a href="https://github.com/Jun-jie-Huang/awesome-LLM-AIOps" aria-label="Jun-jie-Huang/awesome-LLM-AIOps - 399 stars, " target="_blank" rel="noopener">Jun-jie-Huang/awesome-LLM-AIOps</a>
+                        <span class="stars" aria-hidden="true">⭐ 399</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated bibliography of research and industrial applications leveraging Large Language Models to transform IT operations through automated incident management, log analysis, and root cause detection.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/OpsPAI/awesome-AIOps" aria-label="OpsPAI/awesome-AIOps - 295 stars, " target="_blank" rel="noopener">OpsPAI/awesome-AIOps</a>
+                        <span class="stars" aria-hidden="true">⭐ 295</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>OpsPAI/awesome-AIOps is a curated, comprehensive resource directory that consolidates academic research and industrial tools for advancing Artificial Intelligence in IT Operations.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/R3gm/InsightSolver-Colab" aria-label="R3gm/InsightSolver-Colab - 102 stars, Jupyter Notebook" target="_blank" rel="noopener">R3gm/InsightSolver-Colab</a>
+                        <span class="stars" aria-hidden="true">⭐ 102</span>
+                        <span class="language" aria-hidden="true">Jupyter Notebook</span> -
+                        <span>InsightSolver-Colab provides a suite of Google Colab notebooks applying deep learning and AI models to automate and solve operational, visual, and linguistic tasks relevant to AIOps and intelligent monitoring.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/awesome-mlops/awesome-ml-experiment-management" aria-label="awesome-mlops/awesome-ml-experiment-management - 154 stars, " target="_blank" rel="noopener">awesome-mlops/awesome-ml-experiment-management</a>
+                        <span class="stars" aria-hidden="true">⭐ 154</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated list of open-source and commercial tools for tracking, managing, and reproducing machine learning experiments to support scalable and reproducible MLOps practices.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/codefuse-ai/codefuse-devops-eval" aria-label="codefuse-ai/codefuse-devops-eval - 645 stars, Python" target="_blank" rel="noopener">codefuse-ai/codefuse-devops-eval</a>
+                        <span class="stars" aria-hidden="true">⭐ 645</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>DevOps-Eval is a comprehensive benchmark for evaluating large language models on real-world DevOps and AIOps tasks, including log analysis, time series forecasting, and tool orchestration.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+        </main>
+
+        <footer role="contentinfo">
+            <div class="license">
+                <h2 id="license">License</h2>
+                <a href="https://creativecommons.org/publicdomain/zero/1.0/" aria-label="Creative Commons Zero License">
+                    <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg" alt="CC0 License" width="88" height="31" loading="lazy">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fuse.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+
+    <!-- Client-side search powered by Fuse.js -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('search-input');
+        if (!input || typeof Fuse === 'undefined') return;
+
+        // Build searchable index from catalog items
+        const items = Array.from(document.querySelectorAll('main li')).map(li => {
+            const anchor = li.querySelector('a');
+            const name = (anchor?.textContent || '').trim();
+
+            const description = (li.querySelector('span:last-of-type')?.textContent || '').trim();
+            const tags = (li.querySelector('.language')?.textContent || '').trim();
+            const category = (li.closest('section')?.querySelector('h2,h3,h4,h5,h6')?.textContent || '').trim();
+
+            return { li, name, category, tags, description };
+        });
+
+        const fuse = new Fuse(items, {
+            includeScore: true,
+            threshold: 0.4,
+            ignoreLocation: true,
+            keys: [
+                { name: 'name', weight: 0.4 },
+                { name: 'category', weight: 0.3 },
+                { name: 'tags', weight: 0.2 },
+                { name: 'description', weight: 0.1 }
+            ]
+        });
+
+        const resultsContainer = document.getElementById('search-results');
+
+        function renderResults(list) {
+            if (!resultsContainer) return;
+            if (!list.length) {
+                resultsContainer.innerHTML = '<p>No results found.</p>';
+                return;
+            }
+            const html = list.map(item => `<li>${item.li.innerHTML}</li>`).join('\n');
+            resultsContainer.innerHTML = `<h2 style=\"margin-top:0;\">Search Results</h2><ul>${html}</ul>`;
+        }
+
+        input.addEventListener('input', () => {
+            const query = input.value.trim();
+            if (!query) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            const results = fuse.search(query).map(r => r.item);
+            renderResults(results);
+        });
+    });
+    </script>
+</body>
+</html>
