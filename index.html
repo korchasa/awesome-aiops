@@ -1,1513 +1,666 @@
-<div class="awesome-table-component">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+    <meta name="keywords" content="AIOps, Artificial Intelligence for IT Operations, DevOps AI, Intelligent Operations, Predictive Monitoring, AI Monitoring">
+    <meta name="author" content="Awesome AIOps Contributors">
+    <meta property="og:title" content="Awesome AIOps">
+    <meta property="og:description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://awesome-aiops.korchasa.dev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Awesome AIOps">
+    <meta name="twitter:description" content="A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon and mobile icons -->
+    <link rel="icon" href="https://awesome-aiops.korchasa.dev/favicon.ico" sizes="any">
+    <link rel="icon" href="https://awesome-aiops.korchasa.dev/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="https://awesome-aiops.korchasa.dev/apple-touch-icon.png">
+    <link rel="manifest" href="https://awesome-aiops.korchasa.dev/manifest.webmanifest">
+    <meta name="theme-color" content="#1f77b4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <title>Awesome AIOps</title>
     <style>
-        .awesome-table-component {
+        body {
             font-family: 'JetBrains Mono', 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-            max-width: 1200px;
-            margin: 0 auto;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
             padding: 20px;
+            line-height: 1.8;
+            font-size: 16px;
         }
-
-        .table-controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .table-controls input,
-        .table-controls select {
-            padding: 8px 12px;
-            border: 1px solid #d1d5da;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: inherit;
-        }
-
-        .table-controls input {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .table-controls select {
-            min-width: 120px;
-        }
-
-        .results-count {
-            font-size: 14px;
-            color: #666;
-            margin-left: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        thead {
-            background: #f6f8fa;
-        }
-
-        th {
-            padding: 12px 16px;
-            text-align: left;
+        h1, h2, h3, h4, h5, h6 {
+            margin: 2rem 0 1.2rem;
             font-weight: 600;
-            font-size: 14px;
-            color: #24292f;
-            border-bottom: 1px solid #d1d5da;
-            cursor: pointer;
-            user-select: none;
+            line-height: 1.4;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 1rem 0 2rem;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 2em;
+            margin: 2.5rem 0 1.5rem;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 8px;
+        }
+        h3 {
+            font-size: 1.25em;
+            margin: 2rem 0 1rem;
+        }
+        h4 {
+            font-size: 1em;
+            margin: 1.5rem 0 0.8rem;
+        }
+        p {
+            margin: 0 0 1.5rem;
+            max-width: 85ch;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+        }
+        li {
+            margin: 1rem 0;
+            padding-left: 1em;
             position: relative;
+            line-height: 1.6;
         }
-
-        th:hover {
-            background: #f3f4f6;
-        }
-
-        th.sortable {
-            padding-right: 30px;
-        }
-
-        th.sortable::after {
-            content: '↕';
+        li::before {
+            content: "•";
             position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #666;
-            opacity: 0.6;
-        }
-
-        th.sort-asc::after {
-            content: '↑';
-            opacity: 1;
-        }
-
-        th.sort-desc::after {
-            content: '↓';
-            opacity: 1;
-        }
-
-        td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #d1d5da;
-            vertical-align: top;
-        }
-
-        tbody tr:hover {
-            background: #f6f8fa;
-        }
-
-        .project-name {
-            font-weight: 600;
+            left: 0;
             color: #0366d6;
+        }
+        a {
+            color: #1f77b4;
             text-decoration: none;
-            display: block;
-            margin-bottom: 4px;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s ease;
         }
-
-        .project-name:hover {
-            text-decoration: underline;
-        }
-
-        .project-link {
-            color: #656d76;
-            font-size: 12px;
+        a:hover {
+            border-bottom-color: #1f77b4;
             text-decoration: none;
-            display: block;
         }
-
-        .project-link:hover {
-            text-decoration: underline;
+        .note {
+            background-color: #e7f3fe;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            margin: 2.5rem 0;
+            border-radius: 4px;
+            font-size: 0.95em;
         }
-
-        .stars {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            color: #24292f;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .stars::before {
-            content: '⭐';
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-
-        .tag {
-            background: #f1f8ff;
-            color: #0366d6;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-            border: 1px solid #c7e4f7;
-        }
-
-        .description {
-            color: #24292f;
-            line-height: 1.5;
-            max-width: 400px;
-        }
-
-        .no-results {
+        .license {
+            margin-top: 4rem;
+            margin-bottom: 2rem;
             text-align: center;
-            padding: 40px;
-            color: #666;
-            font-style: italic;
+            padding: 1rem;
+            border-top: 1px solid #eee;
         }
-
-        @media (max-width: 768px) {
-            .awesome-table-component {
-                padding: 10px;
-            }
-
-            .table-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .table-controls input {
-                min-width: auto;
-            }
-
-            table {
-                font-size: 14px;
-            }
-
-            th, td {
-                padding: 8px 12px;
-            }
-
-            .description {
-                max-width: 200px;
-            }
+        .stars {
+            color: #4d88ff;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+        .language {
+            color: #6a737d;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-right: 8px;
+            margin-left: 3px;
+            background-color: #f1f1f1;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 50px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header, nav, main, footer {
+            margin-bottom: 3rem;
+            padding: 0 15px;
+        }
+        section {
+            padding-bottom: 1rem;
+        }
+        section + section {
+            border-top: 1px dashed #eee;
+            padding-top: 1.5rem;
+        }
+        /* More compact TOC */
+        nav ul li {
+            margin: 0.3rem 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        /* Nested TOC elements */
+        nav ul ul {
+            margin: 0.3rem 0 0.3rem 0.8rem;
+        }
+        /* Style for item count in TOC */
+        nav ul li span {
+            color: #666;
+            font-size: 0.85em;
+        }
+        main ul li:hover {
+            border-left-color: #007acc;
+            background: #f5f9ff;
+        }
+        /* Styles for static menu */
+        .main-menu {
+            margin-bottom: 1rem;
+        }
+        .main-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        .main-menu li {
+            margin: 0;
+        }
+        .main-menu a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .main-menu a:hover {
+            text-decoration: underline;
+        }
+        /* Styles for back to TOC link */
+        .back-to-toc {
+            text-align: right;
+            font-size: 0.85em;
+            margin-top: 1rem;
+        }
+        .back-to-toc a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .back-to-toc a:hover {
+            text-decoration: underline;
+        }
+        /* Visually hidden (for accessibility) */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
         }
     </style>
 
-    <div class="table-controls">
-        <input type="text" id="search-input" placeholder="Поиск по названию, описанию или тегам..." autocomplete="off">
-        <select id="category-filter">
-            <option value="">Все категории</option>
-        </select>
-        <select id="language-filter">
-            <option value="">Все языки</option>
-        </select>
-        <div class="results-count" id="results-count"></div>
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Awesome AIOps",
+        "description": "A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Awesome AIOps Contributors"
+        },
+        "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "about": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "AIOps Platforms & Frameworks"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Observability & Monitoring"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Automation & Orchestration"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W9XYBWNDVY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W9XYBWNDVY');
+</script>
+<body>
+    <div class="container">
+        <header role="banner">
+            <h1 id="awesome-aiops">Awesome AIOps</h1>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="https://github.com/korchasa/awesome-aiops">GitHub</a></li>
+                </ul>
+            </nav>
+            <div class="note" role="note" aria-label="Important note about this repository">
+                <strong>Note:</strong> This repository contains an automatically compiled list of frameworks, tools, and resources related to AIOps (Artificial Intelligence for IT Operations).
+            </div>
+            <div>
+                A curated list of awesome AIOps (Artificial Intelligence for IT Operations) and AIOps-related software.
+
+            </div>
+
+            <!-- Site-wide search bar -->
+            <form id="search-form" role="search" aria-label="Search across projects" style="margin-top:1.5rem;">
+                <label for="search-input" class="visually-hidden">Search</label>
+                <input type="search" id="search-input" placeholder="Search projects…" style="width:100%;padding:0.6rem 1rem;font-size:1rem;border:1px solid #d1d5da;border-radius:4px;" autocomplete="off">
+            </form>
+            <div id="search-results" aria-live="polite" style="margin-top:1.5rem;"></div>
+        </header>
+
+        <nav role="navigation" aria-labelledby="toc-heading">
+            <h2 id="toc-heading">Table of Contents</h2><ul>
+                <li style="margin-left: 0px;">
+                    <a href="#aiops-platforms-&-frameworks" aria-label="Go to AIOps Platforms & Frameworks section">AIOps Platforms & Frameworks</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#full-stack-aiops-platforms" aria-label="Go to Full-Stack AIOps Platforms section">Full-Stack AIOps Platforms</a> <span aria-label="3 items">(3)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#intelligent-monitoring-systems" aria-label="Go to Intelligent Monitoring Systems section">Intelligent Monitoring Systems</a> <span aria-label="4 items">(4)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#observability-&-monitoring" aria-label="Go to Observability & Monitoring section">Observability & Monitoring</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#log-analysis-&-intelligence" aria-label="Go to Log Analysis & Intelligence section">Log Analysis & Intelligence</a> <span aria-label="7 items">(7)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#automation-&-orchestration" aria-label="Go to Automation & Orchestration section">Automation & Orchestration</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#ai-powered-automation" aria-label="Go to AI-Powered Automation section">AI-Powered Automation</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#self-healing-systems" aria-label="Go to Self-Healing Systems section">Self-Healing Systems</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#data-&-analytics" aria-label="Go to Data & Analytics section">Data & Analytics</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#root-cause-analysis" aria-label="Go to Root Cause Analysis section">Root Cause Analysis</a> <span aria-label="2 items">(2)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#anomaly-detection" aria-label="Go to Anomaly Detection section">Anomaly Detection</a> <span aria-label="2 items">(2)</span>
+                    </li>
+            
+                <li style="margin-left: 15px;">
+                    <a href="#predictive-maintenance" aria-label="Go to Predictive Maintenance section">Predictive Maintenance</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#devops-ai-integration" aria-label="Go to DevOps AI Integration section">DevOps AI Integration</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#testing-intelligence" aria-label="Go to Testing Intelligence section">Testing Intelligence</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#tools-&-utilities" aria-label="Go to Tools & Utilities section">Tools & Utilities</a> 
+                    <ul>
+                <li style="margin-left: 15px;">
+                    <a href="#visualization-&-dashboards" aria-label="Go to Visualization & Dashboards section">Visualization & Dashboards</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul></li>
+            
+                <li style="margin-left: 0px;">
+                    <a href="#educational-resources" aria-label="Go to Educational Resources section">Educational Resources</a> <span aria-label="1 items">(1)</span>
+                    </li>
+            </ul>
+        </nav>
+
+        <main role="main">
+            <section aria-labelledby="aiops-platforms-&-frameworks"><h2 id="aiops-platforms-&-frameworks">AIOps Platforms & Frameworks</h2>
+                
+                
+            <section aria-labelledby="full-stack-aiops-platforms"><h3 id="full-stack-aiops-platforms">Full-Stack AIOps Platforms</h3>
+                <ul aria-label="List of Full-Stack AIOps Platforms items">
+                    <li>
+                        <a href="https://github.com/centreon/centreon" aria-label="centreon/centreon - 140 stars, PHP" target="_blank" rel="noopener">centreon/centreon</a>
+                        <span class="stars" aria-hidden="true">⭐ 140</span>
+                        <span class="language" aria-hidden="true">PHP</span> -
+                        <span>Centreon is an open-source AIOps platform providing comprehensive monitoring and holistic visibility for complex IT workflows across cloud and edge environments.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/keephq/keep" aria-label="keephq/keep - 11205 stars, Python" target="_blank" rel="noopener">keephq/keep</a>
+                        <span class="stars" aria-hidden="true">⭐ 11205</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/microsoft/AIOpsLab" aria-label="microsoft/AIOpsLab - 777 stars, Python" target="_blank" rel="noopener">microsoft/AIOpsLab</a>
+                        <span class="stars" aria-hidden="true">⭐ 777</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="intelligent-monitoring-systems"><h3 id="intelligent-monitoring-systems">Intelligent Monitoring Systems</h3>
+                <ul aria-label="List of Intelligent Monitoring Systems items">
+                    <li>
+                        <a href="https://github.com/Arize-ai/openinference" aria-label="Arize-ai/openinference - 805 stars, Python" target="_blank" rel="noopener">Arize-ai/openinference</a>
+                        <span class="stars" aria-hidden="true">⭐ 805</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Arize-ai/phoenix" aria-label="Arize-ai/phoenix - 8220 stars, Jupyter Notebook" target="_blank" rel="noopener">Arize-ai/phoenix</a>
+                        <span class="stars" aria-hidden="true">⭐ 8220</span>
+                        <span class="language" aria-hidden="true">Jupyter Notebook</span> -
+                        <span>Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lmnr-ai/lmnr" aria-label="lmnr-ai/lmnr - 2526 stars, TypeScript" target="_blank" rel="noopener">lmnr-ai/lmnr</a>
+                        <span class="stars" aria-hidden="true">⭐ 2526</span>
+                        <span class="language" aria-hidden="true">TypeScript</span> -
+                        <span>Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/truera/trulens" aria-label="truera/trulens - 3033 stars, Python" target="_blank" rel="noopener">truera/trulens</a>
+                        <span class="stars" aria-hidden="true">⭐ 3033</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents to improve AI application performance and reliability.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="observability-&-monitoring"><h2 id="observability-&-monitoring">Observability & Monitoring</h2>
+                
+                
+            <section aria-labelledby="log-analysis-&-intelligence"><h3 id="log-analysis-&-intelligence">Log Analysis & Intelligence</h3>
+                <ul aria-label="List of Log Analysis & Intelligence items">
+                    <li>
+                        <a href="https://github.com/Jun-jie-Huang/awesome-LLM-AIOps" aria-label="Jun-jie-Huang/awesome-LLM-AIOps - 401 stars, " target="_blank" rel="noopener">Jun-jie-Huang/awesome-LLM-AIOps</a>
+                        <span class="stars" aria-hidden="true">⭐ 401</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated list of academic and industrial resources focusing on the application of Large Language Models in Artificial Intelligence for IT Operations (AIOps), covering incident management, log analysis, root cause analysis, and anomaly detection.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/d0ng1ee/logdeep" aria-label="d0ng1ee/logdeep - 453 stars, Python" target="_blank" rel="noopener">d0ng1ee/logdeep</a>
+                        <span class="stars" aria-hidden="true">⭐ 453</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>LogDeep is an open-source deep learning-based toolkit for automated anomaly detection in system logs, featuring state-of-the-art models like DeepLog, LogAnomaly, and RobustLog.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/Drain3" aria-label="logpai/Drain3 - 728 stars, Python" target="_blank" rel="noopener">logpai/Drain3</a>
+                        <span class="stars" aria-hidden="true">⭐ 728</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Drain3 is a robust streaming log template miner that extracts and clusters log message templates in real-time using an enhanced Drain algorithm with features like masking, persistence, and memory efficiency.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/Log3C" aria-label="logpai/Log3C - 176 stars, Python" target="_blank" rel="noopener">logpai/Log3C</a>
+                        <span class="stars" aria-hidden="true">⭐ 176</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Log3C is a machine learning-based framework that identifies impactful service system problems by analyzing system logs and correlating them with KPI metrics using cascading clustering and sequence vectorization.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/awesome-log-analysis" aria-label="logpai/awesome-log-analysis - 785 stars, " target="_blank" rel="noopener">logpai/awesome-log-analysis</a>
+                        <span class="stars" aria-hidden="true">⭐ 785</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated repository of research and resources on log analysis, anomaly detection, fault localization, and AIOps, serving as a comprehensive knowledge hub for AI-driven IT operations.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/logpai/loglizer" aria-label="logpai/loglizer - 1395 stars, Jupyter Notebook" target="_blank" rel="noopener">logpai/loglizer</a>
+                        <span class="stars" aria-hidden="true">⭐ 1395</span>
+                        <span class="language" aria-hidden="true">Jupyter Notebook</span> -
+                        <span>Loglizer is a machine learning-based toolkit for automated anomaly detection in system logs, enabling AI-powered IT operations through advanced log analysis.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/salesforce/logai" aria-label="salesforce/logai - 759 stars, Python" target="_blank" rel="noopener">salesforce/logai</a>
+                        <span class="stars" aria-hidden="true">⭐ 759</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>LogAI is an open-source library for AI-powered log analytics and anomaly detection, providing a unified platform with advanced machine learning and deep learning models along with an interactive GUI for comprehensive log intelligence.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="automation-&-orchestration"><h2 id="automation-&-orchestration">Automation & Orchestration</h2>
+                
+                
+            <section aria-labelledby="ai-powered-automation"><h3 id="ai-powered-automation">AI-Powered Automation</h3>
+                <ul aria-label="List of AI-Powered Automation items">
+                    <li>
+                        <a href="https://github.com/IBM/cloud-pak-deployer" aria-label="IBM/cloud-pak-deployer - 153 stars, Jinja" target="_blank" rel="noopener">IBM/cloud-pak-deployer</a>
+                        <span class="stars" aria-hidden="true">⭐ 153</span>
+                        <span class="language" aria-hidden="true">Jinja</span> -
+                        <span>IBM Cloud Pak Deployer is an automation tool for configuration-based installation and continuous management of OpenShift and IBM Cloud Paks, including Watson AIOps, across various cloud infrastructures.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="self-healing-systems"><h3 id="self-healing-systems">Self-Healing Systems</h3>
+                <ul aria-label="List of Self-Healing Systems items">
+                    <li>
+                        <a href="https://github.com/keikoproj/active-monitor" aria-label="keikoproj/active-monitor - 181 stars, Go" target="_blank" rel="noopener">keikoproj/active-monitor</a>
+                        <span class="stars" aria-hidden="true">⭐ 181</span>
+                        <span class="language" aria-hidden="true">Go</span> -
+                        <span>Active-Monitor is a Kubernetes controller that enables deep cluster monitoring and automated self-healing using Argo workflows to ensure reliable and coordinated cluster operations.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="data-&-analytics"><h2 id="data-&-analytics">Data & Analytics</h2>
+                
+                
+            <section aria-labelledby="root-cause-analysis"><h3 id="root-cause-analysis">Root Cause Analysis</h3>
+                <ul aria-label="List of Root Cause Analysis items">
+                    <li>
+                        <a href="https://github.com/HolmesGPT/holmesgpt" aria-label="HolmesGPT/holmesgpt - 1681 stars, Python" target="_blank" rel="noopener">HolmesGPT/holmesgpt</a>
+                        <span class="stars" aria-hidden="true">⭐ 1681</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to automate root cause analysis and remediation suggestions, enhancing incident response and operational efficiency.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/codefuse-ai/codefuse-devops-eval" aria-label="codefuse-ai/codefuse-devops-eval - 645 stars, Python" target="_blank" rel="noopener">codefuse-ai/codefuse-devops-eval</a>
+                        <span class="stars" aria-hidden="true">⭐ 645</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>An industrial-first evaluation benchmark and comprehensive suite for assessing large language models in the DevOps and AIOps domain, featuring extensive datasets and leaderboards for model performance tracking.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="anomaly-detection"><h3 id="anomaly-detection">Anomaly Detection</h3>
+                <ul aria-label="List of Anomaly Detection items">
+                    <li>
+                        <a href="https://github.com/CloudWise-OpenSource/GAIA-DataSet" aria-label="CloudWise-OpenSource/GAIA-DataSet - 257 stars, " target="_blank" rel="noopener">CloudWise-OpenSource/GAIA-DataSet</a>
+                        <span class="stars" aria-hidden="true">⭐ 257</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>GAIA is a comprehensive AIOps dataset designed for analyzing IT operation problems such as anomaly detection, log analysis, and fault localization using real-world-like simulation data and companion anonymized data.</span>
+                    </li>
+                    <li>
+                        <a href="https://github.com/jixinpu/aiopstools" aria-label="jixinpu/aiopstools - 398 stars, Python" target="_blank" rel="noopener">jixinpu/aiopstools</a>
+                        <span class="stars" aria-hidden="true">⭐ 398</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Aiopstools is a Python-based toolkit providing AI-powered modules for anomaly detection, alarm convergence, time series forecasting, and association analysis to enhance IT operations.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+            <section aria-labelledby="predictive-maintenance"><h3 id="predictive-maintenance">Predictive Maintenance</h3>
+                <ul aria-label="List of Predictive Maintenance items">
+                    <li>
+                        <a href="https://github.com/aqstack/sentinel" aria-label="aqstack/sentinel - 379 stars, Go" target="_blank" rel="noopener">aqstack/sentinel</a>
+                        <span class="stars" aria-hidden="true">⭐ 379</span>
+                        <span class="language" aria-hidden="true">Go</span> -
+                        <span>Sentinel is an AI-powered self-healing edge computing agent for Kubernetes that predicts failures, enables autonomous operation during network partitions, and orchestrates workload migrations to enhance edge node reliability and resilience.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="devops-ai-integration"><h2 id="devops-ai-integration">DevOps AI Integration</h2>
+                
+                
+            <section aria-labelledby="testing-intelligence"><h3 id="testing-intelligence">Testing Intelligence</h3>
+                <ul aria-label="List of Testing Intelligence items">
+                    <li>
+                        <a href="https://github.com/athina-ai/athina-sdk" aria-label="athina-ai/athina-sdk - 132 stars, Python" target="_blank" rel="noopener">athina-ai/athina-sdk</a>
+                        <span class="stars" aria-hidden="true">⭐ 132</span>
+                        <span class="language" aria-hidden="true">Python</span> -
+                        <span>Athina SDK is a testing and observability platform that helps developers write tests and monitor the performance and reliability of large language model applications in production.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="tools-&-utilities"><h2 id="tools-&-utilities">Tools & Utilities</h2>
+                
+                
+            <section aria-labelledby="visualization-&-dashboards"><h3 id="visualization-&-dashboards">Visualization & Dashboards</h3>
+                <ul aria-label="List of Visualization & Dashboards items">
+                    <li>
+                        <a href="https://github.com/evilmartians/agent-prism" aria-label="evilmartians/agent-prism - 280 stars, TypeScript" target="_blank" rel="noopener">evilmartians/agent-prism</a>
+                        <span class="stars" aria-hidden="true">⭐ 280</span>
+                        <span class="language" aria-hidden="true">TypeScript</span> -
+                        <span>AgentPrism is an open-source React library that visualizes AI agent traces to help debug and understand agent workflows through interactive and hierarchical timelines integrated with OpenTelemetry data.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            </section>
+            
+            <section aria-labelledby="educational-resources"><h2 id="educational-resources">Educational Resources</h2>
+                <ul aria-label="List of Educational Resources items">
+                    <li>
+                        <a href="https://github.com/OpsPAI/awesome-AIOps" aria-label="OpsPAI/awesome-AIOps - 298 stars, " target="_blank" rel="noopener">OpsPAI/awesome-AIOps</a>
+                        <span class="stars" aria-hidden="true">⭐ 298</span>
+                        <span class="language" aria-hidden="true"></span> -
+                        <span>A curated repository of academic research and industrial resources focused on Artificial Intelligence for IT Operations (AIOps), supporting AI-powered DevOps and infrastructure management.</span>
+                    </li>
+                </ul>
+                <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
+                </section>
+            
+        </main>
+
+        <footer role="contentinfo">
+            <div class="license">
+                <h2 id="license">License</h2>
+                <a href="https://creativecommons.org/publicdomain/zero/1.0/" aria-label="Creative Commons Zero License">
+                    <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg" alt="CC0 License" width="88" height="31" loading="lazy">
+                </a>
+            </div>
+        </footer>
     </div>
 
-    <table id="projects-table">
-        <thead>
-            <tr>
-                <th class="sortable" data-sort="name">Название</th>
-                <th class="sortable" data-sort="stars">⭐ Звёзды</th>
-                <th class="sortable" data-sort="language">Язык</th>
-                <th>Описание</th>
-                <th>Теги</th>
-            </tr>
-        </thead>
-        <tbody id="table-body">
-                
-                <tr data-category="Full-Stack AIOps Platforms" data-language="PHP" data-name="centreon/centreon" data-description="Centreon is an AIOps-powered, open-source monitoring platform that delivers holistic visibility and intelligent automation for IT workflows across cloud, on-premises, and edge environments." data-tags="aiops, alerting, analytics, application-monitoring, centralized-monitoring, cloud-monitoring, dashboard, dashboards, devops, edge-computing, graphing, it-monitoring, it-workflows, metrics, monitoring, monitoring-platform, network-monitoring, observability, open-source, real-time-alerts, scalability, system-monitoring, time-series, troubleshooting">
-                    <td>
-                        <a href="https://github.com/centreon/centreon" class="project-name" target="_blank" rel="noopener">centreon/centreon</a>
-                        <a href="https://github.com/centreon/centreon" class="project-link" target="_blank" rel="noopener">https://github.com/centreon/centreon</a>
-                    </td>
-                    <td>
-                        <span class="stars">140</span>
-                    </td>
-                    <td>PHP</td>
-                    <td>
-                        <div class="description">Centreon is an AIOps-powered, open-source monitoring platform that delivers holistic visibility and intelligent automation for IT workflows across cloud, on-premises, and edge environments.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">alerting</span>
-                            <span class="tag">analytics</span>
-                            <span class="tag">application-monitoring</span>
-                            <span class="tag">centralized-monitoring</span>
-                            <span class="tag">cloud-monitoring</span>
-                            <span class="tag">dashboard</span>
-                            <span class="tag">dashboards</span>
-                            <span class="tag">devops</span>
-                            <span class="tag">edge-computing</span>
-                            <span class="tag">graphing</span>
-                            <span class="tag">it-monitoring</span>
-                            <span class="tag">it-workflows</span>
-                            <span class="tag">metrics</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">monitoring-platform</span>
-                            <span class="tag">network-monitoring</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">open-source</span>
-                            <span class="tag">real-time-alerts</span>
-                            <span class="tag">scalability</span>
-                            <span class="tag">system-monitoring</span>
-                            <span class="tag">time-series</span>
-                            <span class="tag">troubleshooting</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Full-Stack AIOps Platforms" data-language="Python" data-name="keephq/keep" data-description="Keep is an open-source AIOps and alert management platform that provides AI-powered alert deduplication, correlation, enrichment, and automation with deep integrations across monitoring and observability tools." data-tags="ai-backends, ai-powered-correlation, ai-powered-summarization, aiops, alarm, alarms, alert-correlation, alert-deduplication, alert-enrichment, alert-filtering, alert-management, alerting, alerts, automation, bi-directional-integrations, dashboards, github-actions, incident-context-gathering, incident-management, it-operations, monitoring, monitoring-tool, monitoring-tools, observability-tools, open-source, python, python3, workflow-automation, workflows">
-                    <td>
-                        <a href="https://github.com/keephq/keep" class="project-name" target="_blank" rel="noopener">keephq/keep</a>
-                        <a href="https://github.com/keephq/keep" class="project-link" target="_blank" rel="noopener">https://github.com/keephq/keep</a>
-                    </td>
-                    <td>
-                        <span class="stars">11192</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">Keep is an open-source AIOps and alert management platform that provides AI-powered alert deduplication, correlation, enrichment, and automation with deep integrations across monitoring and observability tools.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-backends</span>
-                            <span class="tag">ai-powered-correlation</span>
-                            <span class="tag">ai-powered-summarization</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">alarm</span>
-                            <span class="tag">alarms</span>
-                            <span class="tag">alert-correlation</span>
-                            <span class="tag">alert-deduplication</span>
-                            <span class="tag">alert-enrichment</span>
-                            <span class="tag">alert-filtering</span>
-                            <span class="tag">alert-management</span>
-                            <span class="tag">alerting</span>
-                            <span class="tag">alerts</span>
-                            <span class="tag">automation</span>
-                            <span class="tag">bi-directional-integrations</span>
-                            <span class="tag">dashboards</span>
-                            <span class="tag">github-actions</span>
-                            <span class="tag">incident-context-gathering</span>
-                            <span class="tag">incident-management</span>
-                            <span class="tag">it-operations</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">monitoring-tool</span>
-                            <span class="tag">monitoring-tools</span>
-                            <span class="tag">observability-tools</span>
-                            <span class="tag">open-source</span>
-                            <span class="tag">python</span>
-                            <span class="tag">python3</span>
-                            <span class="tag">workflow-automation</span>
-                            <span class="tag">workflows</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Full-Stack AIOps Platforms" data-language="Python" data-name="microsoft/AIOpsLab" data-description="AIOpsLab is a scalable, reproducible framework for designing, deploying, and evaluating autonomous AI agents in realistic cloud-native operational environments with built-in benchmarking and telemetry." data-tags="ai-driven-operations, aiops, autonomous-agents, azure-openai, benchmarking, cloud-native, fault-injection, interoperability, kind-cluster, kubernetes, microservices, mlops, observability, reproducibility, scalable-evaluation, telemetry, vllm, w&b-integration">
-                    <td>
-                        <a href="https://github.com/microsoft/AIOpsLab" class="project-name" target="_blank" rel="noopener">microsoft/AIOpsLab</a>
-                        <a href="https://github.com/microsoft/AIOpsLab" class="project-link" target="_blank" rel="noopener">https://github.com/microsoft/AIOpsLab</a>
-                    </td>
-                    <td>
-                        <span class="stars">775</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">AIOpsLab is a scalable, reproducible framework for designing, deploying, and evaluating autonomous AI agents in realistic cloud-native operational environments with built-in benchmarking and telemetry.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-driven-operations</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">autonomous-agents</span>
-                            <span class="tag">azure-openai</span>
-                            <span class="tag">benchmarking</span>
-                            <span class="tag">cloud-native</span>
-                            <span class="tag">fault-injection</span>
-                            <span class="tag">interoperability</span>
-                            <span class="tag">kind-cluster</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">microservices</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">reproducibility</span>
-                            <span class="tag">scalable-evaluation</span>
-                            <span class="tag">telemetry</span>
-                            <span class="tag">vllm</span>
-                            <span class="tag">w&b-integration</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr data-category="Intelligent Monitoring Systems" data-language="Jupyter Notebook" data-name="Arize-ai/phoenix" data-description="Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language models with broad framework and provider support." data-tags="agents, ai-frameworks, ai-monitoring, ai-observability, aiengineering, anthropic, benchmarking, cloud, conda, containerized, datasets, deployment, evals, evaluation, experimentation, langchain, llamaindex, llm-eval, llm-evaluation, llm-providers, llm-tracing, llmops, llms, openai, opentelemetry, pip, prompt-engineering, prompt-management, prompt-optimization, smolagents, troubleshooting, version-control">
-                    <td>
-                        <a href="https://github.com/Arize-ai/phoenix" class="project-name" target="_blank" rel="noopener">Arize-ai/phoenix</a>
-                        <a href="https://github.com/Arize-ai/phoenix" class="project-link" target="_blank" rel="noopener">https://github.com/Arize-ai/phoenix</a>
-                    </td>
-                    <td>
-                        <span class="stars">8194</span>
-                    </td>
-                    <td>Jupyter Notebook</td>
-                    <td>
-                        <div class="description">Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language models with broad framework and provider support.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">agents</span>
-                            <span class="tag">ai-frameworks</span>
-                            <span class="tag">ai-monitoring</span>
-                            <span class="tag">ai-observability</span>
-                            <span class="tag">aiengineering</span>
-                            <span class="tag">anthropic</span>
-                            <span class="tag">benchmarking</span>
-                            <span class="tag">cloud</span>
-                            <span class="tag">conda</span>
-                            <span class="tag">containerized</span>
-                            <span class="tag">datasets</span>
-                            <span class="tag">deployment</span>
-                            <span class="tag">evals</span>
-                            <span class="tag">evaluation</span>
-                            <span class="tag">experimentation</span>
-                            <span class="tag">langchain</span>
-                            <span class="tag">llamaindex</span>
-                            <span class="tag">llm-eval</span>
-                            <span class="tag">llm-evaluation</span>
-                            <span class="tag">llm-providers</span>
-                            <span class="tag">llm-tracing</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">llms</span>
-                            <span class="tag">openai</span>
-                            <span class="tag">opentelemetry</span>
-                            <span class="tag">pip</span>
-                            <span class="tag">prompt-engineering</span>
-                            <span class="tag">prompt-management</span>
-                            <span class="tag">prompt-optimization</span>
-                            <span class="tag">smolagents</span>
-                            <span class="tag">troubleshooting</span>
-                            <span class="tag">version-control</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Intelligent Monitoring Systems" data-language="TypeScript" data-name="lmnr-ai/lmnr" data-description="Laminar is an open-source platform for tracing, evaluating, and managing AI applications, providing comprehensive observability and data management tools to optimize AI product engineering and monitoring." data-tags="agents, ai, ai-application-monitoring, ai-observability, ai-performance-monitoring, ai-product-engineering, ai-telemetry, aiops, analytics, anthropic, clickhouse, dashboards, data-flywheel, datasets, developer-tools, evals, evaluation, evaluations, function-tracing, grpc, image-tracing, langchain, llm-evaluation, llm-observability, llm-workflow, llmops, monitoring, observability, open-source, openai, opentelemetry, postgres, python-sdk, rabbitmq, rust, rust-backend, rust-lang, sdk, self-hosted, tracing, ts, typescript, typescript-sdk">
-                    <td>
-                        <a href="https://github.com/lmnr-ai/lmnr" class="project-name" target="_blank" rel="noopener">lmnr-ai/lmnr</a>
-                        <a href="https://github.com/lmnr-ai/lmnr" class="project-link" target="_blank" rel="noopener">https://github.com/lmnr-ai/lmnr</a>
-                    </td>
-                    <td>
-                        <span class="stars">2521</span>
-                    </td>
-                    <td>TypeScript</td>
-                    <td>
-                        <div class="description">Laminar is an open-source platform for tracing, evaluating, and managing AI applications, providing comprehensive observability and data management tools to optimize AI product engineering and monitoring.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">agents</span>
-                            <span class="tag">ai</span>
-                            <span class="tag">ai-application-monitoring</span>
-                            <span class="tag">ai-observability</span>
-                            <span class="tag">ai-performance-monitoring</span>
-                            <span class="tag">ai-product-engineering</span>
-                            <span class="tag">ai-telemetry</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">analytics</span>
-                            <span class="tag">anthropic</span>
-                            <span class="tag">clickhouse</span>
-                            <span class="tag">dashboards</span>
-                            <span class="tag">data-flywheel</span>
-                            <span class="tag">datasets</span>
-                            <span class="tag">developer-tools</span>
-                            <span class="tag">evals</span>
-                            <span class="tag">evaluation</span>
-                            <span class="tag">evaluations</span>
-                            <span class="tag">function-tracing</span>
-                            <span class="tag">grpc</span>
-                            <span class="tag">image-tracing</span>
-                            <span class="tag">langchain</span>
-                            <span class="tag">llm-evaluation</span>
-                            <span class="tag">llm-observability</span>
-                            <span class="tag">llm-workflow</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">open-source</span>
-                            <span class="tag">openai</span>
-                            <span class="tag">opentelemetry</span>
-                            <span class="tag">postgres</span>
-                            <span class="tag">python-sdk</span>
-                            <span class="tag">rabbitmq</span>
-                            <span class="tag">rust</span>
-                            <span class="tag">rust-backend</span>
-                            <span class="tag">rust-lang</span>
-                            <span class="tag">sdk</span>
-                            <span class="tag">self-hosted</span>
-                            <span class="tag">tracing</span>
-                            <span class="tag">ts</span>
-                            <span class="tag">typescript</span>
-                            <span class="tag">typescript-sdk</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Intelligent Monitoring Systems" data-language="Python" data-name="truera/trulens" data-description="TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents, enabling developers to identify failure modes and iteratively improve their applications with comprehensive feedback and instrumentation." data-tags="agent-evaluation, agentops, ai-agents, ai-application-improvement, ai-development, ai-experiment-tracking, ai-feedback, ai-model-performance, ai-monitoring, ai-observability, ai-research, evals, explainable-ml, feedback-functions, harmless-evaluations, helpful-evaluations, honest-evaluations, instrumentation, knowledge-source-evaluation, llm-eval, llm-evaluation, llmops, llms, machine-learning, model-evaluation, neural-networks, prompt-evaluation, rag-triad, retriever-evaluation, tracking">
-                    <td>
-                        <a href="https://github.com/truera/trulens" class="project-name" target="_blank" rel="noopener">truera/trulens</a>
-                        <a href="https://github.com/truera/trulens" class="project-link" target="_blank" rel="noopener">https://github.com/truera/trulens</a>
-                    </td>
-                    <td>
-                        <span class="stars">3031</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents, enabling developers to identify failure modes and iteratively improve their applications with comprehensive feedback and instrumentation.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">agent-evaluation</span>
-                            <span class="tag">agentops</span>
-                            <span class="tag">ai-agents</span>
-                            <span class="tag">ai-application-improvement</span>
-                            <span class="tag">ai-development</span>
-                            <span class="tag">ai-experiment-tracking</span>
-                            <span class="tag">ai-feedback</span>
-                            <span class="tag">ai-model-performance</span>
-                            <span class="tag">ai-monitoring</span>
-                            <span class="tag">ai-observability</span>
-                            <span class="tag">ai-research</span>
-                            <span class="tag">evals</span>
-                            <span class="tag">explainable-ml</span>
-                            <span class="tag">feedback-functions</span>
-                            <span class="tag">harmless-evaluations</span>
-                            <span class="tag">helpful-evaluations</span>
-                            <span class="tag">honest-evaluations</span>
-                            <span class="tag">instrumentation</span>
-                            <span class="tag">knowledge-source-evaluation</span>
-                            <span class="tag">llm-eval</span>
-                            <span class="tag">llm-evaluation</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">llms</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">model-evaluation</span>
-                            <span class="tag">neural-networks</span>
-                            <span class="tag">prompt-evaluation</span>
-                            <span class="tag">rag-triad</span>
-                            <span class="tag">retriever-evaluation</span>
-                            <span class="tag">tracking</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="Log Analysis & Intelligence" data-language="" data-name="CloudWise-OpenSource/GAIA-DataSet" data-description="GAIA is a large-scale, labeled AIOps dataset enabling research in anomaly detection, log analysis, and fault localization using real-world metric, trace, and log data with simulated faults." data-tags="ai, aiops, analysis, anomaly-detection, anomaly-injection, business-logs, companion-data, dataset, devops, fault-localization, it-operations, log-analysis, metric-data, metrics, micross, monitoring, ops, root-cause-analysis, time-series, trace-data">
-                    <td>
-                        <a href="https://github.com/CloudWise-OpenSource/GAIA-DataSet" class="project-name" target="_blank" rel="noopener">CloudWise-OpenSource/GAIA-DataSet</a>
-                        <a href="https://github.com/CloudWise-OpenSource/GAIA-DataSet" class="project-link" target="_blank" rel="noopener">https://github.com/CloudWise-OpenSource/GAIA-DataSet</a>
-                    </td>
-                    <td>
-                        <span class="stars">256</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        <div class="description">GAIA is a large-scale, labeled AIOps dataset enabling research in anomaly detection, log analysis, and fault localization using real-world metric, trace, and log data with simulated faults.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">analysis</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">anomaly-injection</span>
-                            <span class="tag">business-logs</span>
-                            <span class="tag">companion-data</span>
-                            <span class="tag">dataset</span>
-                            <span class="tag">devops</span>
-                            <span class="tag">fault-localization</span>
-                            <span class="tag">it-operations</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">metric-data</span>
-                            <span class="tag">metrics</span>
-                            <span class="tag">micross</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">ops</span>
-                            <span class="tag">root-cause-analysis</span>
-                            <span class="tag">time-series</span>
-                            <span class="tag">trace-data</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Log Analysis & Intelligence" data-language="" data-name="logpai/awesome-log-analysis" data-description="A curated academic resource listing key researchers, conferences, datasets, and papers advancing log analysis, anomaly detection, and AIOps for intelligent IT operations." data-tags="aiops, anamoly-detection, anomaly-detection, bug-finding, conferences, datasets, failure-diagnosis, failure-prediction, fault-localization, journals, log-analysis, log-mining, log-parsing, researchers, surveys">
-                    <td>
-                        <a href="https://github.com/logpai/awesome-log-analysis" class="project-name" target="_blank" rel="noopener">logpai/awesome-log-analysis</a>
-                        <a href="https://github.com/logpai/awesome-log-analysis" class="project-link" target="_blank" rel="noopener">https://github.com/logpai/awesome-log-analysis</a>
-                    </td>
-                    <td>
-                        <span class="stars">785</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        <div class="description">A curated academic resource listing key researchers, conferences, datasets, and papers advancing log analysis, anomaly detection, and AIOps for intelligent IT operations.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">anamoly-detection</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">bug-finding</span>
-                            <span class="tag">conferences</span>
-                            <span class="tag">datasets</span>
-                            <span class="tag">failure-diagnosis</span>
-                            <span class="tag">failure-prediction</span>
-                            <span class="tag">fault-localization</span>
-                            <span class="tag">journals</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">log-mining</span>
-                            <span class="tag">log-parsing</span>
-                            <span class="tag">researchers</span>
-                            <span class="tag">surveys</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Log Analysis & Intelligence" data-language="Jupyter Notebook" data-name="logpai/loglizer" data-description="Loglizer is an open-source machine learning toolkit for automated anomaly detection in system logs, enabling intelligent fault diagnosis and proactive IT operations through structured log analysis and diverse AI models." data-tags="aiops, anomaly-detection, autoencoder, deeplog, failure-diagnosis, fault-diagnosis, feature-extraction, isolation-forest, it-operations, lof, log-analysis, log-parsing, loghub, machine-learning, one-class-svm, pca, supervised-learning, system-monitoring, unsupervised-learning">
-                    <td>
-                        <a href="https://github.com/logpai/loglizer" class="project-name" target="_blank" rel="noopener">logpai/loglizer</a>
-                        <a href="https://github.com/logpai/loglizer" class="project-link" target="_blank" rel="noopener">https://github.com/logpai/loglizer</a>
-                    </td>
-                    <td>
-                        <span class="stars">1395</span>
-                    </td>
-                    <td>Jupyter Notebook</td>
-                    <td>
-                        <div class="description">Loglizer is an open-source machine learning toolkit for automated anomaly detection in system logs, enabling intelligent fault diagnosis and proactive IT operations through structured log analysis and diverse AI models.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">autoencoder</span>
-                            <span class="tag">deeplog</span>
-                            <span class="tag">failure-diagnosis</span>
-                            <span class="tag">fault-diagnosis</span>
-                            <span class="tag">feature-extraction</span>
-                            <span class="tag">isolation-forest</span>
-                            <span class="tag">it-operations</span>
-                            <span class="tag">lof</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">log-parsing</span>
-                            <span class="tag">loghub</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">one-class-svm</span>
-                            <span class="tag">pca</span>
-                            <span class="tag">supervised-learning</span>
-                            <span class="tag">system-monitoring</span>
-                            <span class="tag">unsupervised-learning</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Log Analysis & Intelligence" data-language="Python" data-name="salesforce/logai" data-description="LogAI is an open-source AIOps library that provides end-to-end log analytics capabilities—including automated parsing, clustering, summarization, and anomaly detection—with a unified interface and interactive GUI for AI-powered IT operations monitoring." data-tags="ai, aiops, anomaly-detection, automated-log-parsing, benchmarking, deep-learning, gui-portal, huggingface-integration, log-analysis, log-analytics, log-clustering, log-intelligence, log-summarization, machine-learning, ml-benchmarking, opentelemetry, python, time-series-analysis">
-                    <td>
-                        <a href="https://github.com/salesforce/logai" class="project-name" target="_blank" rel="noopener">salesforce/logai</a>
-                        <a href="https://github.com/salesforce/logai" class="project-link" target="_blank" rel="noopener">https://github.com/salesforce/logai</a>
-                    </td>
-                    <td>
-                        <span class="stars">759</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">LogAI is an open-source AIOps library that provides end-to-end log analytics capabilities—including automated parsing, clustering, summarization, and anomaly detection—with a unified interface and interactive GUI for AI-powered IT operations monitoring.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">automated-log-parsing</span>
-                            <span class="tag">benchmarking</span>
-                            <span class="tag">deep-learning</span>
-                            <span class="tag">gui-portal</span>
-                            <span class="tag">huggingface-integration</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">log-analytics</span>
-                            <span class="tag">log-clustering</span>
-                            <span class="tag">log-intelligence</span>
-                            <span class="tag">log-summarization</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">ml-benchmarking</span>
-                            <span class="tag">opentelemetry</span>
-                            <span class="tag">python</span>
-                            <span class="tag">time-series-analysis</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="Self-Healing Systems" data-language="Go" data-name="aqstack/sentinel" data-description="Sentinel is a self-healing edge computing agent for Kubernetes that uses predictive failure detection and partition-resilient autonomous orchestration to ensure resilient and efficient operation of edge nodes." data-tags="aiops, autonomous-orchestration, circuit-breaker, distributed-systems, edge-computing, edge-nodes, exponential-backoff, failure-prediction, golang, health-checks, kubernetes, kubernetes-native-probes, lightweight-monitoring, machine-learning, machine-learning-models, partition-resilience, predictive-failure-detection, prometheus, prometheus-metrics, raft, raft-consensus, rate-limiting, self-healing, workload-migration">
-                    <td>
-                        <a href="https://github.com/aqstack/sentinel" class="project-name" target="_blank" rel="noopener">aqstack/sentinel</a>
-                        <a href="https://github.com/aqstack/sentinel" class="project-link" target="_blank" rel="noopener">https://github.com/aqstack/sentinel</a>
-                    </td>
-                    <td>
-                        <span class="stars">396</span>
-                    </td>
-                    <td>Go</td>
-                    <td>
-                        <div class="description">Sentinel is a self-healing edge computing agent for Kubernetes that uses predictive failure detection and partition-resilient autonomous orchestration to ensure resilient and efficient operation of edge nodes.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">autonomous-orchestration</span>
-                            <span class="tag">circuit-breaker</span>
-                            <span class="tag">distributed-systems</span>
-                            <span class="tag">edge-computing</span>
-                            <span class="tag">edge-nodes</span>
-                            <span class="tag">exponential-backoff</span>
-                            <span class="tag">failure-prediction</span>
-                            <span class="tag">golang</span>
-                            <span class="tag">health-checks</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">kubernetes-native-probes</span>
-                            <span class="tag">lightweight-monitoring</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">machine-learning-models</span>
-                            <span class="tag">partition-resilience</span>
-                            <span class="tag">predictive-failure-detection</span>
-                            <span class="tag">prometheus</span>
-                            <span class="tag">prometheus-metrics</span>
-                            <span class="tag">raft</span>
-                            <span class="tag">raft-consensus</span>
-                            <span class="tag">rate-limiting</span>
-                            <span class="tag">self-healing</span>
-                            <span class="tag">workload-migration</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Self-Healing Systems" data-language="Go" data-name="keikoproj/active-monitor" data-description="Active-Monitor is an AIOps tool for Kubernetes that enables automated, workflow-driven health monitoring and self-healing using Argo Workflows." data-tags="aiops, argo-workflows, automated-remediation, cluster-observability, custom-resource, health-checks, healthcheck, healthcheck-workflow, kubernetes, kubernetes-cluster, kubernetes-controller, kubernetes-tools, machine-learning, metrics, monitoring, prometheus-metrics, remedy, self-healing, workflow">
-                    <td>
-                        <a href="https://github.com/keikoproj/active-monitor" class="project-name" target="_blank" rel="noopener">keikoproj/active-monitor</a>
-                        <a href="https://github.com/keikoproj/active-monitor" class="project-link" target="_blank" rel="noopener">https://github.com/keikoproj/active-monitor</a>
-                    </td>
-                    <td>
-                        <span class="stars">181</span>
-                    </td>
-                    <td>Go</td>
-                    <td>
-                        <div class="description">Active-Monitor is an AIOps tool for Kubernetes that enables automated, workflow-driven health monitoring and self-healing using Argo Workflows.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">argo-workflows</span>
-                            <span class="tag">automated-remediation</span>
-                            <span class="tag">cluster-observability</span>
-                            <span class="tag">custom-resource</span>
-                            <span class="tag">health-checks</span>
-                            <span class="tag">healthcheck</span>
-                            <span class="tag">healthcheck-workflow</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">kubernetes-cluster</span>
-                            <span class="tag">kubernetes-controller</span>
-                            <span class="tag">kubernetes-tools</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">metrics</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">prometheus-metrics</span>
-                            <span class="tag">remedy</span>
-                            <span class="tag">self-healing</span>
-                            <span class="tag">workflow</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="Root Cause Analysis" data-language="Python" data-name="HolmesGPT/holmesgpt" data-description="HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to perform root cause analysis and automate remediation workflows." data-tags="ai-agent, ai-powered-it-operations, aiops, alert-investigation, argocd, automation, aws-rds, chatbot, chatops, cloud-providers, cloud-troubleshooting, cncf-sandbox-project, confluence, coralogix-logs, datadog, devops, devops-monitoring, devops-tools, docker, github, helm, incident, incident-management, incident-response, integrations, jira, kafka, kubernetes, llm, llm-agent, llm-framework, llms, loki, monitoring, newrelic, observability, observability-tools, on-call-systems, opensearch, opsgenie, pagerduty, prometheus, prometheus/alertmanager, rabbitmq, remediation-suggestions, robusta, root-cause-analysis, site-reliability-engineering, slab, slack, sre, tempo">
-                    <td>
-                        <a href="https://github.com/HolmesGPT/holmesgpt" class="project-name" target="_blank" rel="noopener">HolmesGPT/holmesgpt</a>
-                        <a href="https://github.com/HolmesGPT/holmesgpt" class="project-link" target="_blank" rel="noopener">https://github.com/HolmesGPT/holmesgpt</a>
-                    </td>
-                    <td>
-                        <span class="stars">1662</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to perform root cause analysis and automate remediation workflows.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-agent</span>
-                            <span class="tag">ai-powered-it-operations</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">alert-investigation</span>
-                            <span class="tag">argocd</span>
-                            <span class="tag">automation</span>
-                            <span class="tag">aws-rds</span>
-                            <span class="tag">chatbot</span>
-                            <span class="tag">chatops</span>
-                            <span class="tag">cloud-providers</span>
-                            <span class="tag">cloud-troubleshooting</span>
-                            <span class="tag">cncf-sandbox-project</span>
-                            <span class="tag">confluence</span>
-                            <span class="tag">coralogix-logs</span>
-                            <span class="tag">datadog</span>
-                            <span class="tag">devops</span>
-                            <span class="tag">devops-monitoring</span>
-                            <span class="tag">devops-tools</span>
-                            <span class="tag">docker</span>
-                            <span class="tag">github</span>
-                            <span class="tag">helm</span>
-                            <span class="tag">incident</span>
-                            <span class="tag">incident-management</span>
-                            <span class="tag">incident-response</span>
-                            <span class="tag">integrations</span>
-                            <span class="tag">jira</span>
-                            <span class="tag">kafka</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">llm</span>
-                            <span class="tag">llm-agent</span>
-                            <span class="tag">llm-framework</span>
-                            <span class="tag">llms</span>
-                            <span class="tag">loki</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">newrelic</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">observability-tools</span>
-                            <span class="tag">on-call-systems</span>
-                            <span class="tag">opensearch</span>
-                            <span class="tag">opsgenie</span>
-                            <span class="tag">pagerduty</span>
-                            <span class="tag">prometheus</span>
-                            <span class="tag">prometheus/alertmanager</span>
-                            <span class="tag">rabbitmq</span>
-                            <span class="tag">remediation-suggestions</span>
-                            <span class="tag">robusta</span>
-                            <span class="tag">root-cause-analysis</span>
-                            <span class="tag">site-reliability-engineering</span>
-                            <span class="tag">slab</span>
-                            <span class="tag">slack</span>
-                            <span class="tag">sre</span>
-                            <span class="tag">tempo</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr data-category="Anomaly Detection" data-language="Python" data-name="d0ng1ee/logdeep" data-description="LogDeep is an AI-powered, open-source deep learning toolkit for automated anomaly detection in system logs, integrating state-of-the-art models like DeepLog, LogAnomaly, and RobustLog to enable intelligent, scalable monitoring in AIOps environments." data-tags="ai-powered-monitoring, aiops, anomaly-detection, deep-learning, deeplog, failure-detection, log-analysis, log-anomaly, log-anomaly-detection, loganomaly, pytorch, robustlog, sequence-prediction, supervised-learning, system-logs, unsupervised-learning">
-                    <td>
-                        <a href="https://github.com/d0ng1ee/logdeep" class="project-name" target="_blank" rel="noopener">d0ng1ee/logdeep</a>
-                        <a href="https://github.com/d0ng1ee/logdeep" class="project-link" target="_blank" rel="noopener">https://github.com/d0ng1ee/logdeep</a>
-                    </td>
-                    <td>
-                        <span class="stars">453</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">LogDeep is an AI-powered, open-source deep learning toolkit for automated anomaly detection in system logs, integrating state-of-the-art models like DeepLog, LogAnomaly, and RobustLog to enable intelligent, scalable monitoring in AIOps environments.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-powered-monitoring</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">deep-learning</span>
-                            <span class="tag">deeplog</span>
-                            <span class="tag">failure-detection</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">log-anomaly</span>
-                            <span class="tag">log-anomaly-detection</span>
-                            <span class="tag">loganomaly</span>
-                            <span class="tag">pytorch</span>
-                            <span class="tag">robustlog</span>
-                            <span class="tag">sequence-prediction</span>
-                            <span class="tag">supervised-learning</span>
-                            <span class="tag">system-logs</span>
-                            <span class="tag">unsupervised-learning</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Anomaly Detection" data-language="Python" data-name="jixinpu/aiopstools" data-description="aiopstools is a Python toolkit that implements core AIOps functions—including anomaly detection, alarm convergence, time series forecasting, and alarm association analysis—to automate and enhance IT operations monitoring." data-tags="aiops, alarm-association-analysis, alarm-convergence, anomaly-detection, association-analysis, automation, it-operations, machine-learning, monitoring, python, time-series-forecasting, timeseries-forecasting">
-                    <td>
-                        <a href="https://github.com/jixinpu/aiopstools" class="project-name" target="_blank" rel="noopener">jixinpu/aiopstools</a>
-                        <a href="https://github.com/jixinpu/aiopstools" class="project-link" target="_blank" rel="noopener">https://github.com/jixinpu/aiopstools</a>
-                    </td>
-                    <td>
-                        <span class="stars">398</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">aiopstools is a Python toolkit that implements core AIOps functions—including anomaly detection, alarm convergence, time series forecasting, and alarm association analysis—to automate and enhance IT operations monitoring.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">alarm-association-analysis</span>
-                            <span class="tag">alarm-convergence</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">association-analysis</span>
-                            <span class="tag">automation</span>
-                            <span class="tag">it-operations</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">python</span>
-                            <span class="tag">time-series-forecasting</span>
-                            <span class="tag">timeseries-forecasting</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Anomaly Detection" data-language="Python" data-name="logpai/Drain3" data-description="Drain3 is an AI-powered, streaming log template miner that enables real-time log clustering and parameter extraction for AIOps and DevOps monitoring systems." data-tags="aiops, anomaly-detection, clustering, devops-monitoring, drain, kafka, log, log-clustering, log-parsing, log-template-mining, machine-learning, masking, observability, online-learning, parameter-extraction, persistence, redis, streaming-log-analysis, template-mining">
-                    <td>
-                        <a href="https://github.com/logpai/Drain3" class="project-name" target="_blank" rel="noopener">logpai/Drain3</a>
-                        <a href="https://github.com/logpai/Drain3" class="project-link" target="_blank" rel="noopener">https://github.com/logpai/Drain3</a>
-                    </td>
-                    <td>
-                        <span class="stars">728</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">Drain3 is an AI-powered, streaming log template miner that enables real-time log clustering and parameter extraction for AIOps and DevOps monitoring systems.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">clustering</span>
-                            <span class="tag">devops-monitoring</span>
-                            <span class="tag">drain</span>
-                            <span class="tag">kafka</span>
-                            <span class="tag">log</span>
-                            <span class="tag">log-clustering</span>
-                            <span class="tag">log-parsing</span>
-                            <span class="tag">log-template-mining</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">masking</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">online-learning</span>
-                            <span class="tag">parameter-extraction</span>
-                            <span class="tag">persistence</span>
-                            <span class="tag">redis</span>
-                            <span class="tag">streaming-log-analysis</span>
-                            <span class="tag">template-mining</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Anomaly Detection" data-language="Python" data-name="logpai/Log3C" data-description="Log3C is an AI-driven framework that identifies critical system problems by correlating structured log sequences with KPI metrics using cascading clustering and machine learning." data-tags="aiops, anomaly-detection, cascading-clustering, it-operations, kpi, kpi-correlation, log-analysis, log-parsing, log-sequence-vectorization, machine-learning, problem-identification, system-monitoring">
-                    <td>
-                        <a href="https://github.com/logpai/Log3C" class="project-name" target="_blank" rel="noopener">logpai/Log3C</a>
-                        <a href="https://github.com/logpai/Log3C" class="project-link" target="_blank" rel="noopener">https://github.com/logpai/Log3C</a>
-                    </td>
-                    <td>
-                        <span class="stars">176</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">Log3C is an AI-driven framework that identifies critical system problems by correlating structured log sequences with KPI metrics using cascading clustering and machine learning.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">cascading-clustering</span>
-                            <span class="tag">it-operations</span>
-                            <span class="tag">kpi</span>
-                            <span class="tag">kpi-correlation</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">log-parsing</span>
-                            <span class="tag">log-sequence-vectorization</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">problem-identification</span>
-                            <span class="tag">system-monitoring</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="Testing Intelligence" data-language="Python" data-name="athina-ai/athina-sdk" data-description="Athina SDK is an AI-powered testing and monitoring platform that enables teams to evaluate, observe, and improve the reliability of LLM applications in production through automated, customizable evaluations." data-tags="ai-observability, ai-powered-monitoring, aiops, hallucination-detection, llm, llm-evals, llm-monitoring, llm-test, llm-testing, llmops, mlops, monitoring, production-evaluation, prompt-validation, testing-tools">
-                    <td>
-                        <a href="https://github.com/athina-ai/athina-sdk" class="project-name" target="_blank" rel="noopener">athina-ai/athina-sdk</a>
-                        <a href="https://github.com/athina-ai/athina-sdk" class="project-link" target="_blank" rel="noopener">https://github.com/athina-ai/athina-sdk</a>
-                    </td>
-                    <td>
-                        <span class="stars">132</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">Athina SDK is an AI-powered testing and monitoring platform that enables teams to evaluate, observe, and improve the reliability of LLM applications in production through automated, customizable evaluations.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-observability</span>
-                            <span class="tag">ai-powered-monitoring</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">hallucination-detection</span>
-                            <span class="tag">llm</span>
-                            <span class="tag">llm-evals</span>
-                            <span class="tag">llm-monitoring</span>
-                            <span class="tag">llm-test</span>
-                            <span class="tag">llm-testing</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">production-evaluation</span>
-                            <span class="tag">prompt-validation</span>
-                            <span class="tag">testing-tools</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="Container Intelligence" data-language="Go" data-name="SeldonIO/seldon-core" data-description="Seldon Core is an MLOps and LLMOps framework for deploying, managing, and scaling AI systems and machine learning models in Kubernetes environments, supporting modular pipelines, autoscaling, multi-model serving, and custom components for production-ready AI applications." data-tags="a/b-testing, ai-systems, aiops, autoscaling, business-source-license, custom-components, deployment, drift-detection, experiments, kafka, kubernetes, large-language-models, llmops, machine-learning, machine-learning-models, machine-learning-operations, management, ml-model-serving, mlops, multi-model-serving, outlier-detection, overcommit, pipelines, production-machine-learning, production-models, real-time-data-streaming, scaling, serving, shadow-deployments">
-                    <td>
-                        <a href="https://github.com/SeldonIO/seldon-core" class="project-name" target="_blank" rel="noopener">SeldonIO/seldon-core</a>
-                        <a href="https://github.com/SeldonIO/seldon-core" class="project-link" target="_blank" rel="noopener">https://github.com/SeldonIO/seldon-core</a>
-                    </td>
-                    <td>
-                        <span class="stars">4704</span>
-                    </td>
-                    <td>Go</td>
-                    <td>
-                        <div class="description">Seldon Core is an MLOps and LLMOps framework for deploying, managing, and scaling AI systems and machine learning models in Kubernetes environments, supporting modular pipelines, autoscaling, multi-model serving, and custom components for production-ready AI applications.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">a/b-testing</span>
-                            <span class="tag">ai-systems</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">autoscaling</span>
-                            <span class="tag">business-source-license</span>
-                            <span class="tag">custom-components</span>
-                            <span class="tag">deployment</span>
-                            <span class="tag">drift-detection</span>
-                            <span class="tag">experiments</span>
-                            <span class="tag">kafka</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">large-language-models</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">machine-learning-models</span>
-                            <span class="tag">machine-learning-operations</span>
-                            <span class="tag">management</span>
-                            <span class="tag">ml-model-serving</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">multi-model-serving</span>
-                            <span class="tag">outlier-detection</span>
-                            <span class="tag">overcommit</span>
-                            <span class="tag">pipelines</span>
-                            <span class="tag">production-machine-learning</span>
-                            <span class="tag">production-models</span>
-                            <span class="tag">real-time-data-streaming</span>
-                            <span class="tag">scaling</span>
-                            <span class="tag">serving</span>
-                            <span class="tag">shadow-deployments</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                
-                <tr data-category="AI Libraries & SDKs" data-language="Python" data-name="Arize-ai/openinference" data-description="OpenInference is an open standard for AI observability that enables OpenTelemetry-based tracing of LLM applications and their surrounding context to improve monitoring, debugging, and operational reliability in MLOps workflows." data-tags="ai-instrumentation, ai-monitoring, ai-observability, ai-powered-monitoring, aiops, gemini, hacktoberfest, haystack, langchain, langraph, llamaindex, llm-applications, llm-tracing, llmops, llms, mcp, mlops, openai, openai-agents, openinference, opentelemetry, pydantic-ai, smolagents, telemetry, tracing, vector-store-tracing, vercel, vertex">
-                    <td>
-                        <a href="https://github.com/Arize-ai/openinference" class="project-name" target="_blank" rel="noopener">Arize-ai/openinference</a>
-                        <a href="https://github.com/Arize-ai/openinference" class="project-link" target="_blank" rel="noopener">https://github.com/Arize-ai/openinference</a>
-                    </td>
-                    <td>
-                        <span class="stars">804</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">OpenInference is an open standard for AI observability that enables OpenTelemetry-based tracing of LLM applications and their surrounding context to improve monitoring, debugging, and operational reliability in MLOps workflows.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-instrumentation</span>
-                            <span class="tag">ai-monitoring</span>
-                            <span class="tag">ai-observability</span>
-                            <span class="tag">ai-powered-monitoring</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">gemini</span>
-                            <span class="tag">hacktoberfest</span>
-                            <span class="tag">haystack</span>
-                            <span class="tag">langchain</span>
-                            <span class="tag">langraph</span>
-                            <span class="tag">llamaindex</span>
-                            <span class="tag">llm-applications</span>
-                            <span class="tag">llm-tracing</span>
-                            <span class="tag">llmops</span>
-                            <span class="tag">llms</span>
-                            <span class="tag">mcp</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">openai</span>
-                            <span class="tag">openai-agents</span>
-                            <span class="tag">openinference</span>
-                            <span class="tag">opentelemetry</span>
-                            <span class="tag">pydantic-ai</span>
-                            <span class="tag">smolagents</span>
-                            <span class="tag">telemetry</span>
-                            <span class="tag">tracing</span>
-                            <span class="tag">vector-store-tracing</span>
-                            <span class="tag">vercel</span>
-                            <span class="tag">vertex</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr data-category="Data Connectors" data-language="Jinja" data-name="IBM/cloud-pak-deployer" data-description="The IBM Cloud Pak Deployer is a GitOps-based automation tool that simplifies the deployment and continuous management of OpenShift and IBM Cloud Paks—including Watson AIOps—across hybrid and multi-cloud environments using declarative configuration." data-tags="automation, azure-red-hat-openshift, business-automation, cloud-pak-for-data, cloud-pak-for-integration, configuration-driven, day-2-operations, deployment, gitops, ibm-cloud, infrastructure-as-code, openshift, red-hat-openshift, rosa, vsphere, watson-aiops">
-                    <td>
-                        <a href="https://github.com/IBM/cloud-pak-deployer" class="project-name" target="_blank" rel="noopener">IBM/cloud-pak-deployer</a>
-                        <a href="https://github.com/IBM/cloud-pak-deployer" class="project-link" target="_blank" rel="noopener">https://github.com/IBM/cloud-pak-deployer</a>
-                    </td>
-                    <td>
-                        <span class="stars">153</span>
-                    </td>
-                    <td>Jinja</td>
-                    <td>
-                        <div class="description">The IBM Cloud Pak Deployer is a GitOps-based automation tool that simplifies the deployment and continuous management of OpenShift and IBM Cloud Paks—including Watson AIOps—across hybrid and multi-cloud environments using declarative configuration.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">automation</span>
-                            <span class="tag">azure-red-hat-openshift</span>
-                            <span class="tag">business-automation</span>
-                            <span class="tag">cloud-pak-for-data</span>
-                            <span class="tag">cloud-pak-for-integration</span>
-                            <span class="tag">configuration-driven</span>
-                            <span class="tag">day-2-operations</span>
-                            <span class="tag">deployment</span>
-                            <span class="tag">gitops</span>
-                            <span class="tag">ibm-cloud</span>
-                            <span class="tag">infrastructure-as-code</span>
-                            <span class="tag">openshift</span>
-                            <span class="tag">red-hat-openshift</span>
-                            <span class="tag">rosa</span>
-                            <span class="tag">vsphere</span>
-                            <span class="tag">watson-aiops</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr data-category="Visualization & Dashboards" data-language="TypeScript" data-name="evilmartians/agent-prism" data-description="AgentPrism is a React-based visualization library for debugging AI agent traces by converting OpenTelemetry and Langfuse data into interactive hierarchical timelines." data-tags="agent-workflow, ai-agent-tracing, ai-agents, ai-debugging, ai-monitoring, aiops, component-library, developer-tools, distributed-tracing, generative-ai, langchain, langfuse, llm, llm-observability, mlops, monitoring, observability, open-source, opentelemetry, react, react-components, tailwindcss, trace-visualization, tracing, typescript, ui-components, visualization">
-                    <td>
-                        <a href="https://github.com/evilmartians/agent-prism" class="project-name" target="_blank" rel="noopener">evilmartians/agent-prism</a>
-                        <a href="https://github.com/evilmartians/agent-prism" class="project-link" target="_blank" rel="noopener">https://github.com/evilmartians/agent-prism</a>
-                    </td>
-                    <td>
-                        <span class="stars">279</span>
-                    </td>
-                    <td>TypeScript</td>
-                    <td>
-                        <div class="description">AgentPrism is a React-based visualization library for debugging AI agent traces by converting OpenTelemetry and Langfuse data into interactive hierarchical timelines.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">agent-workflow</span>
-                            <span class="tag">ai-agent-tracing</span>
-                            <span class="tag">ai-agents</span>
-                            <span class="tag">ai-debugging</span>
-                            <span class="tag">ai-monitoring</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">component-library</span>
-                            <span class="tag">developer-tools</span>
-                            <span class="tag">distributed-tracing</span>
-                            <span class="tag">generative-ai</span>
-                            <span class="tag">langchain</span>
-                            <span class="tag">langfuse</span>
-                            <span class="tag">llm</span>
-                            <span class="tag">llm-observability</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">monitoring</span>
-                            <span class="tag">observability</span>
-                            <span class="tag">open-source</span>
-                            <span class="tag">opentelemetry</span>
-                            <span class="tag">react</span>
-                            <span class="tag">react-components</span>
-                            <span class="tag">tailwindcss</span>
-                            <span class="tag">trace-visualization</span>
-                            <span class="tag">tracing</span>
-                            <span class="tag">typescript</span>
-                            <span class="tag">ui-components</span>
-                            <span class="tag">visualization</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Visualization & Dashboards" data-language="Go" data-name="onepanelio/onepanel" data-description="OnePanel is an open-source, cloud-native MLOps platform that unifies data labeling, model training, tuning, deployment, and automation for computer vision applications across cloud and on-premises environments." data-tags="ai, ai-powered-devops, aiops, annotation, argo, automated-workflows, cloud-native, computer-vision, cvat, deeplearning, end-to-end-platform, etl, hyperparameter-tuning, inference, jupyterlab, labeling, machinelearning, mlops, model-deployment, model-labeling, model-training, nni, on-premises, pipelines, pytorch, tensorboard, tensorflow, training, workflows">
-                    <td>
-                        <a href="https://github.com/onepanelio/onepanel" class="project-name" target="_blank" rel="noopener">onepanelio/onepanel</a>
-                        <a href="https://github.com/onepanelio/onepanel" class="project-link" target="_blank" rel="noopener">https://github.com/onepanelio/onepanel</a>
-                    </td>
-                    <td>
-                        <span class="stars">732</span>
-                    </td>
-                    <td>Go</td>
-                    <td>
-                        <div class="description">OnePanel is an open-source, cloud-native MLOps platform that unifies data labeling, model training, tuning, deployment, and automation for computer vision applications across cloud and on-premises environments.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai</span>
-                            <span class="tag">ai-powered-devops</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">annotation</span>
-                            <span class="tag">argo</span>
-                            <span class="tag">automated-workflows</span>
-                            <span class="tag">cloud-native</span>
-                            <span class="tag">computer-vision</span>
-                            <span class="tag">cvat</span>
-                            <span class="tag">deeplearning</span>
-                            <span class="tag">end-to-end-platform</span>
-                            <span class="tag">etl</span>
-                            <span class="tag">hyperparameter-tuning</span>
-                            <span class="tag">inference</span>
-                            <span class="tag">jupyterlab</span>
-                            <span class="tag">labeling</span>
-                            <span class="tag">machinelearning</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">model-deployment</span>
-                            <span class="tag">model-labeling</span>
-                            <span class="tag">model-training</span>
-                            <span class="tag">nni</span>
-                            <span class="tag">on-premises</span>
-                            <span class="tag">pipelines</span>
-                            <span class="tag">pytorch</span>
-                            <span class="tag">tensorboard</span>
-                            <span class="tag">tensorflow</span>
-                            <span class="tag">training</span>
-                            <span class="tag">workflows</span>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr data-category="Educational Resources" data-language="" data-name="Jun-jie-Huang/awesome-LLM-AIOps" data-description="A curated bibliography of research and industrial applications leveraging Large Language Models to transform IT operations through automated incident management, log analysis, and root cause detection." data-tags="ai-agents, aiops, anomaly-detection, benchmarking, incident-management, it-operations-automation, llm, log-analysis, prompt-engineering, root-cause-analysis">
-                    <td>
-                        <a href="https://github.com/Jun-jie-Huang/awesome-LLM-AIOps" class="project-name" target="_blank" rel="noopener">Jun-jie-Huang/awesome-LLM-AIOps</a>
-                        <a href="https://github.com/Jun-jie-Huang/awesome-LLM-AIOps" class="project-link" target="_blank" rel="noopener">https://github.com/Jun-jie-Huang/awesome-LLM-AIOps</a>
-                    </td>
-                    <td>
-                        <span class="stars">400</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        <div class="description">A curated bibliography of research and industrial applications leveraging Large Language Models to transform IT operations through automated incident management, log analysis, and root cause detection.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-agents</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">benchmarking</span>
-                            <span class="tag">incident-management</span>
-                            <span class="tag">it-operations-automation</span>
-                            <span class="tag">llm</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">prompt-engineering</span>
-                            <span class="tag">root-cause-analysis</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Educational Resources" data-language="" data-name="OpsPAI/awesome-AIOps" data-description="OpsPAI/awesome-AIOps is a curated, comprehensive resource directory that consolidates academic research and industrial tools for advancing Artificial Intelligence in IT Operations." data-tags="academic-research, aiops, anomaly-detection, artificial-intelligence-for-it-operations, benchmarks, blogs, companies, competitions, curated-list, datasets, failure-detection, incident-management, industrial-materials, knowledge-graphs, large-language-models, log-analysis, microservices, monitoring-tools, root-cause-analysis, tools, white-papers">
-                    <td>
-                        <a href="https://github.com/OpsPAI/awesome-AIOps" class="project-name" target="_blank" rel="noopener">OpsPAI/awesome-AIOps</a>
-                        <a href="https://github.com/OpsPAI/awesome-AIOps" class="project-link" target="_blank" rel="noopener">https://github.com/OpsPAI/awesome-AIOps</a>
-                    </td>
-                    <td>
-                        <span class="stars">297</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        <div class="description">OpsPAI/awesome-AIOps is a curated, comprehensive resource directory that consolidates academic research and industrial tools for advancing Artificial Intelligence in IT Operations.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">academic-research</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">anomaly-detection</span>
-                            <span class="tag">artificial-intelligence-for-it-operations</span>
-                            <span class="tag">benchmarks</span>
-                            <span class="tag">blogs</span>
-                            <span class="tag">companies</span>
-                            <span class="tag">competitions</span>
-                            <span class="tag">curated-list</span>
-                            <span class="tag">datasets</span>
-                            <span class="tag">failure-detection</span>
-                            <span class="tag">incident-management</span>
-                            <span class="tag">industrial-materials</span>
-                            <span class="tag">knowledge-graphs</span>
-                            <span class="tag">large-language-models</span>
-                            <span class="tag">log-analysis</span>
-                            <span class="tag">microservices</span>
-                            <span class="tag">monitoring-tools</span>
-                            <span class="tag">root-cause-analysis</span>
-                            <span class="tag">tools</span>
-                            <span class="tag">white-papers</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Educational Resources" data-language="Jupyter Notebook" data-name="R3gm/InsightSolver-Colab" data-description="InsightSolver-Colab provides a suite of Google Colab notebooks applying deep learning and AI models to automate and solve operational, visual, and linguistic tasks relevant to AIOps and intelligent monitoring." data-tags="ai-ops, ai-powered-automation, aiops, autogpt, colab-notebook, colorization, computer-vision, deep-learning, dreambooth, ggml, gguf, gptq, image-restoration, image-to-3d, llama-2, llama-cpp, llm, llm-inference, lora, machine-learning, object-detection, ocr, operational-issue-resolution, speech-to-text, stable-diffusion, super-resolution, text-to-image, text-to-speech, translation, video-segmentation">
-                    <td>
-                        <a href="https://github.com/R3gm/InsightSolver-Colab" class="project-name" target="_blank" rel="noopener">R3gm/InsightSolver-Colab</a>
-                        <a href="https://github.com/R3gm/InsightSolver-Colab" class="project-link" target="_blank" rel="noopener">https://github.com/R3gm/InsightSolver-Colab</a>
-                    </td>
-                    <td>
-                        <span class="stars">102</span>
-                    </td>
-                    <td>Jupyter Notebook</td>
-                    <td>
-                        <div class="description">InsightSolver-Colab provides a suite of Google Colab notebooks applying deep learning and AI models to automate and solve operational, visual, and linguistic tasks relevant to AIOps and intelligent monitoring.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-ops</span>
-                            <span class="tag">ai-powered-automation</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">autogpt</span>
-                            <span class="tag">colab-notebook</span>
-                            <span class="tag">colorization</span>
-                            <span class="tag">computer-vision</span>
-                            <span class="tag">deep-learning</span>
-                            <span class="tag">dreambooth</span>
-                            <span class="tag">ggml</span>
-                            <span class="tag">gguf</span>
-                            <span class="tag">gptq</span>
-                            <span class="tag">image-restoration</span>
-                            <span class="tag">image-to-3d</span>
-                            <span class="tag">llama-2</span>
-                            <span class="tag">llama-cpp</span>
-                            <span class="tag">llm</span>
-                            <span class="tag">llm-inference</span>
-                            <span class="tag">lora</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">object-detection</span>
-                            <span class="tag">ocr</span>
-                            <span class="tag">operational-issue-resolution</span>
-                            <span class="tag">speech-to-text</span>
-                            <span class="tag">stable-diffusion</span>
-                            <span class="tag">super-resolution</span>
-                            <span class="tag">text-to-image</span>
-                            <span class="tag">text-to-speech</span>
-                            <span class="tag">translation</span>
-                            <span class="tag">video-segmentation</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Educational Resources" data-language="" data-name="awesome-mlops/awesome-ml-experiment-management" data-description="A curated list of open-source and commercial tools for tracking, managing, and reproducing machine learning experiments to support scalable and reproducible MLOps practices." data-tags="aim, aiops, awesome, awesome-list, clearml, comet, commercial-products, data-science, dataops, datascience, deep-learning, dvc, experiment-management, experiment-tracking, hyperparameter-tracking, keepsake, kubernetes, machine-learning, ml-experiment-tracking, ml-lifecycle, mlflow, mlops, model-management, model-monitoring, model-registry, neptune, open-source-tools, orchestration, polyaxon, sacred, tensorboard, version-control, weights-&-biases">
-                    <td>
-                        <a href="https://github.com/awesome-mlops/awesome-ml-experiment-management" class="project-name" target="_blank" rel="noopener">awesome-mlops/awesome-ml-experiment-management</a>
-                        <a href="https://github.com/awesome-mlops/awesome-ml-experiment-management" class="project-link" target="_blank" rel="noopener">https://github.com/awesome-mlops/awesome-ml-experiment-management</a>
-                    </td>
-                    <td>
-                        <span class="stars">155</span>
-                    </td>
-                    <td>-</td>
-                    <td>
-                        <div class="description">A curated list of open-source and commercial tools for tracking, managing, and reproducing machine learning experiments to support scalable and reproducible MLOps practices.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">aim</span>
-                            <span class="tag">aiops</span>
-                            <span class="tag">awesome</span>
-                            <span class="tag">awesome-list</span>
-                            <span class="tag">clearml</span>
-                            <span class="tag">comet</span>
-                            <span class="tag">commercial-products</span>
-                            <span class="tag">data-science</span>
-                            <span class="tag">dataops</span>
-                            <span class="tag">datascience</span>
-                            <span class="tag">deep-learning</span>
-                            <span class="tag">dvc</span>
-                            <span class="tag">experiment-management</span>
-                            <span class="tag">experiment-tracking</span>
-                            <span class="tag">hyperparameter-tracking</span>
-                            <span class="tag">keepsake</span>
-                            <span class="tag">kubernetes</span>
-                            <span class="tag">machine-learning</span>
-                            <span class="tag">ml-experiment-tracking</span>
-                            <span class="tag">ml-lifecycle</span>
-                            <span class="tag">mlflow</span>
-                            <span class="tag">mlops</span>
-                            <span class="tag">model-management</span>
-                            <span class="tag">model-monitoring</span>
-                            <span class="tag">model-registry</span>
-                            <span class="tag">neptune</span>
-                            <span class="tag">open-source-tools</span>
-                            <span class="tag">orchestration</span>
-                            <span class="tag">polyaxon</span>
-                            <span class="tag">sacred</span>
-                            <span class="tag">tensorboard</span>
-                            <span class="tag">version-control</span>
-                            <span class="tag">weights-&-biases</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-category="Educational Resources" data-language="Python" data-name="codefuse-ai/codefuse-devops-eval" data-description="DevOps-Eval is a comprehensive benchmark for evaluating large language models on real-world DevOps and AIOps tasks, including log analysis, time series forecasting, and tool orchestration." data-tags="ai-powered-devops, aiops-benchmark, devops-evaluation, llm-evaluation, log-parsing, model-performance-leaderboard, multiple-choice-questions, root-cause-analysis, time-series-anomaly-detection, time-series-forecasting, toollearning">
-                    <td>
-                        <a href="https://github.com/codefuse-ai/codefuse-devops-eval" class="project-name" target="_blank" rel="noopener">codefuse-ai/codefuse-devops-eval</a>
-                        <a href="https://github.com/codefuse-ai/codefuse-devops-eval" class="project-link" target="_blank" rel="noopener">https://github.com/codefuse-ai/codefuse-devops-eval</a>
-                    </td>
-                    <td>
-                        <span class="stars">645</span>
-                    </td>
-                    <td>Python</td>
-                    <td>
-                        <div class="description">DevOps-Eval is a comprehensive benchmark for evaluating large language models on real-world DevOps and AIOps tasks, including log analysis, time series forecasting, and tool orchestration.</div>
-                    </td>
-                    <td>
-                        <div class="tags">
-                            <span class="tag">ai-powered-devops</span>
-                            <span class="tag">aiops-benchmark</span>
-                            <span class="tag">devops-evaluation</span>
-                            <span class="tag">llm-evaluation</span>
-                            <span class="tag">log-parsing</span>
-                            <span class="tag">model-performance-leaderboard</span>
-                            <span class="tag">multiple-choice-questions</span>
-                            <span class="tag">root-cause-analysis</span>
-                            <span class="tag">time-series-anomaly-detection</span>
-                            <span class="tag">time-series-forecasting</span>
-                            <span class="tag">toollearning</span>
-                        </div>
-                    </td>
-                </tr>
-                
-        </tbody>
-    </table>
+    <!-- Fuse.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 
+    <!-- Client-side search powered by Fuse.js -->
     <script>
-        class AwesomeTableComponent {
-            constructor() {
-                this.table = document.getElementById('projects-table');
-                this.tableBody = document.getElementById('table-body');
-                this.searchInput = document.getElementById('search-input');
-                this.categoryFilter = document.getElementById('category-filter');
-                this.languageFilter = document.getElementById('language-filter');
-                this.resultsCount = document.getElementById('results-count');
-                this.rows = Array.from(this.tableBody.querySelectorAll('tr'));
-                this.currentSort = { column: null, direction: null };
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('search-input');
+        if (!input || typeof Fuse === 'undefined') return;
 
-                this.init();
+        // Build searchable index from catalog items
+        const items = Array.from(document.querySelectorAll('main li')).map(li => {
+            const anchor = li.querySelector('a');
+            const name = (anchor?.textContent || '').trim();
+
+            const description = (li.querySelector('span:last-of-type')?.textContent || '').trim();
+            const tags = (li.querySelector('.language')?.textContent || '').trim();
+            const category = (li.closest('section')?.querySelector('h2,h3,h4,h5,h6')?.textContent || '').trim();
+
+            return { li, name, category, tags, description };
+        });
+
+        const fuse = new Fuse(items, {
+            includeScore: true,
+            threshold: 0.4,
+            ignoreLocation: true,
+            keys: [
+                { name: 'name', weight: 0.4 },
+                { name: 'category', weight: 0.3 },
+                { name: 'tags', weight: 0.2 },
+                { name: 'description', weight: 0.1 }
+            ]
+        });
+
+        const resultsContainer = document.getElementById('search-results');
+
+        function renderResults(list) {
+            if (!resultsContainer) return;
+            if (!list.length) {
+                resultsContainer.innerHTML = '<p>No results found.</p>';
+                return;
             }
-
-            init() {
-                // Populate filters
-                this.populateFilters();
-
-                // Add event listeners
-                this.searchInput.addEventListener('input', () => this.filterAndSort());
-                this.categoryFilter.addEventListener('change', () => this.filterAndSort());
-                this.languageFilter.addEventListener('change', () => this.filterAndSort());
-
-                // Add sorting to headers
-                this.table.querySelectorAll('th.sortable').forEach(th => {
-                    th.addEventListener('click', () => this.sort(th.dataset.sort));
-                });
-
-                // Initial render
-                this.filterAndSort();
-            }
-
-            populateFilters() {
-                const categories = new Set();
-                const languages = new Set();
-
-                this.rows.forEach(row => {
-                    const category = row.dataset.category;
-                    const language = row.dataset.language;
-
-                    if (category) categories.add(category);
-                    if (language) languages.add(language);
-                });
-
-                // Populate category filter
-                Array.from(categories).sort().forEach(category => {
-                    const option = document.createElement('option');
-                    option.value = category;
-                    option.textContent = category;
-                    this.categoryFilter.appendChild(option);
-                });
-
-                // Populate language filter
-                Array.from(languages).sort().forEach(language => {
-                    const option = document.createElement('option');
-                    option.value = language;
-                    option.textContent = language;
-                    this.languageFilter.appendChild(option);
-                });
-            }
-
-            filterAndSort() {
-                const searchTerm = this.searchInput.value.toLowerCase().trim();
-                const selectedCategory = this.categoryFilter.value;
-                const selectedLanguage = this.languageFilter.value;
-
-                let filteredRows = this.rows.filter(row => {
-                    const matchesSearch =
-                        !searchTerm ||
-                        row.dataset.name.toLowerCase().includes(searchTerm) ||
-                        row.dataset.description.toLowerCase().includes(searchTerm) ||
-                        row.dataset.tags.toLowerCase().includes(searchTerm);
-
-                    const matchesCategory = !selectedCategory || row.dataset.category === selectedCategory;
-                    const matchesLanguage = !selectedLanguage || row.dataset.language === selectedLanguage;
-
-                    return matchesSearch && matchesCategory && matchesLanguage;
-                });
-
-                // Apply sorting
-                if (this.currentSort.column) {
-                    filteredRows.sort((a, b) => {
-                        let aVal = a.dataset[this.currentSort.column] || '';
-                        let bVal = b.dataset[this.currentSort.column] || '';
-
-                        // Convert stars to numbers
-                        if (this.currentSort.column === 'stars') {
-                            aVal = parseInt(aVal) || 0;
-                            bVal = parseInt(bVal) || 0;
-                        } else {
-                            aVal = aVal.toLowerCase();
-                            bVal = bVal.toLowerCase();
-                        }
-
-                        if (aVal < bVal) return this.currentSort.direction === 'asc' ? -1 : 1;
-                        if (aVal > bVal) return this.currentSort.direction === 'asc' ? 1 : -1;
-                        return 0;
-                    });
-                }
-
-                // Update table
-                this.tableBody.innerHTML = '';
-                if (filteredRows.length === 0) {
-                    this.tableBody.innerHTML = '<tr><td colspan="5" class="no-results">Нет результатов поиска</td></tr>';
-                } else {
-                    filteredRows.forEach(row => this.tableBody.appendChild(row));
-                }
-
-                // Update results count
-                this.resultsCount.textContent = `Найдено: ${filteredRows.length} проектов`;
-            }
-
-            sort(column) {
-                // Reset previous sort indicators
-                this.table.querySelectorAll('th').forEach(th => {
-                    th.classList.remove('sort-asc', 'sort-desc');
-                });
-
-                // Determine new sort direction
-                if (this.currentSort.column === column) {
-                    this.currentSort.direction = this.currentSort.direction === 'asc' ? 'desc' : 'asc';
-                } else {
-                    this.currentSort.column = column;
-                    this.currentSort.direction = 'asc';
-                }
-
-                // Update sort indicator
-                const th = this.table.querySelector(`th[data-sort="${column}"]`);
-                th.classList.add(`sort-${this.currentSort.direction}`);
-
-                // Re-filter and sort
-                this.filterAndSort();
-            }
+            const html = list.map(item => `<li>${item.li.innerHTML}</li>`).join('\n');
+            resultsContainer.innerHTML = `<h2 style=\"margin-top:0;\">Search Results</h2><ul>${html}</ul>`;
         }
 
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => new AwesomeTableComponent());
-        } else {
-            new AwesomeTableComponent();
-        }
+        input.addEventListener('input', () => {
+            const query = input.value.trim();
+            if (!query) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            const results = fuse.search(query).map(r => r.item);
+            renderResults(results);
+        });
+    });
     </script>
-</div>
+</body>
+</html>
