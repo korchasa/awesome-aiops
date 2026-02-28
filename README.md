@@ -12,7 +12,7 @@ Table of Contents:
 - [Observability & Monitoring](#observability-&-monitoring)
     - [Log Analysis & Intelligence](#log-analysis-&-intelligence) (7)
 - [Automation & Orchestration](#automation-&-orchestration)
-    - [AI-Powered Automation](#ai-powered-automation) (1)
+    - [AI-Powered Automation](#ai-powered-automation) (2)
     - [Self-Healing Systems](#self-healing-systems) (1)
 - [Data & Analytics](#data-&-analytics)
     - [Root Cause Analysis](#root-cause-analysis) (3)
@@ -33,13 +33,13 @@ Table of Contents:
 ### Full-Stack AIOps Platforms
 
 - [centreon/centreon](https://github.com/centreon/centreon) (142 PHP) - Centreon is an open-source AIOps platform providing comprehensive monitoring and holistic visibility for complex IT workflows across cloud and edge environments.
-- [keephq/keep](https://github.com/keephq/keep) (11463 Python) - Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.
-- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (810 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
+- [keephq/keep](https://github.com/keephq/keep) (11464 Python) - Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.
+- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (809 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
 
 ### Intelligent Monitoring Systems
 
-- [Arize-ai/openinference](https://github.com/Arize-ai/openinference) (869 Python) - OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.
-- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (8696 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
+- [Arize-ai/openinference](https://github.com/Arize-ai/openinference) (870 Python) - OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.
+- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (8698 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
 - [lmnr-ai/lmnr](https://github.com/lmnr-ai/lmnr) (2630 TypeScript) - Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.
 - [truera/trulens](https://github.com/truera/trulens) (3121 Python) - TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents to improve AI application performance and reliability.
 
@@ -60,6 +60,7 @@ Table of Contents:
 ### AI-Powered Automation
 
 - [IBM/cloud-pak-deployer](https://github.com/IBM/cloud-pak-deployer) (154 Jinja) - IBM Cloud Pak Deployer is an automation tool for configuration-based installation and continuous management of OpenShift and IBM Cloud Paks, including Watson AIOps, across various cloud infrastructures.
+- [Idun-Group/idun-agent-platform](https://github.com/Idun-Group/idun-agent-platform) (110 TypeScript) - An open-source platform to make LangGraph/ADK AI agents production-ready with governance, observability, and security features.
 
 ### Self-Healing Systems
 
@@ -70,7 +71,7 @@ Table of Contents:
 ### Root Cause Analysis
 
 - [codefuse-ai/codefuse-devops-eval](https://github.com/codefuse-ai/codefuse-devops-eval) (647 Python) - An industrial-first evaluation benchmark and comprehensive suite for assessing large language models in the DevOps and AIOps domain, featuring extensive datasets and leaderboards for model performance tracking.
-- [HolmesGPT/holmesgpt](https://github.com/HolmesGPT/holmesgpt) (1903 Python) - HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to automate root cause analysis and remediation suggestions, enhancing incident response and operational efficiency.
+- [HolmesGPT/holmesgpt](https://github.com/HolmesGPT/holmesgpt) (1904 Python) - HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to automate root cause analysis and remediation suggestions, enhancing incident response and operational efficiency.
 - [phamquiluan/RCAEval](https://github.com/phamquiluan/RCAEval) (105 Jupyter Notebook) - RCAEval is an open-source benchmark and evaluation framework providing datasets and baseline methods for root cause analysis in microservice systems, supporting metric, trace, and multi-source data for AI-powered DevOps and AIOps applications.
 
 ### Anomaly Detection
@@ -98,7 +99,7 @@ Table of Contents:
 
 ### Visualization & Dashboards
 
-- [evilmartians/agent-prism](https://github.com/evilmartians/agent-prism) (295 TypeScript) - AgentPrism is an open-source React library that visualizes AI agent traces to help debug and understand agent workflows through interactive and hierarchical timelines integrated with OpenTelemetry data.
+- [evilmartians/agent-prism](https://github.com/evilmartians/agent-prism) (296 TypeScript) - AgentPrism is an open-source React library that visualizes AI agent traces to help debug and understand agent workflows through interactive and hierarchical timelines integrated with OpenTelemetry data.
 
 ## Educational Resources
 
