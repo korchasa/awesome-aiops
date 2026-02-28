@@ -1,40 +1,38 @@
-{{- define "CategoryTOC" -}}
-{{- range . }}
-{{- if or .Items .Categories }}
-{{- $indent := mul .Depth 4 }}{{- printf "%*s" $indent "" }}- [{{ .Title }}](#{{ .Title | lower | replace " " "-" }}) {{ if .Items -}}({{ len .Items }}){{- end }}
-{{ if .Categories -}}
-{{ template "CategoryTOC" .Categories }}
-{{- end -}}
-{{- end }}
-{{ end -}}
-{{- end -}}
+{#- Recursive macro for Table of Contents -#}
+{%- macro categoryTOC(cats) -%}
+{%- for cat in cats -%}
+{%- if cat.items.length > 0 or cat.categories.length > 0 -%}
+{{ "    " | repeat(cat.depth) }}- [{{ cat.title }}](#{{ cat.title | lower | replace(" ", "-") }}){% if cat.items.length > 0 %} ({{ cat.items.length }}){% endif %}
+{% if cat.categories.length > 0 %}{{ categoryTOC(cat.categories) }}{% endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endmacro -%}
 
-{{- define "CategoryView" -}}
-{{- range . }}
-{{- if or .Items .Categories }}
-##{{- repeat .Depth "#" }} {{ .Title }}
-{{ if .Items -}}
-{{- range .Items }}
-- [{{ .Name }}]({{ .Link }}) (★{{ .Stars }} {{ .Language }}) - {{ .Summary }}
-{{- end }}
-{{- end }}
-{{ if .Categories -}}
-{{ template "CategoryView" .Categories }}
-{{- end -}}
-{{- end }}
-{{ end -}}
-{{- end -}}
+{#- Recursive macro for Category content -#}
+{%- macro categoryView(cats) -%}
+{%- for cat in cats -%}
+{%- if cat.items.length > 0 or cat.categories.length > 0 %}
+#{{ "#" | repeat(cat.depth + 1) }} {{ cat.title }}
+{% if cat.items.length > 0 -%}
+{%- for item in cat.items %}
+- [{{ item.name }}]({{ item.link }}) ({{ item.stars }} {{ item.language }}) - {{ item.summary }}
+{%- endfor %}
+{% endif -%}
+{%- if cat.categories.length > 0 %}{{ categoryView(cat.categories) }}{% endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endmacro -%}
 
-# {{ .Config.Project.Name }}
+# {{ config.project.name }}
 
-> **Note:** {{ .Config.Project.Note }}
+> **Note:** {{ config.project.note }}
 
-{{ .Config.Project.Description | safeHTML }}
+{{ config.project.description | safeHTML }}
 
 Table of Contents:
-{{ template "CategoryTOC" .Categories }}
+{{ categoryTOC(categories) }}
 
-{{ template "CategoryView" .Categories }}
+{{ categoryView(categories) }}
 
 ## License
 

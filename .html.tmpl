@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ .Config.Project.Description }}">
-    <meta name="keywords" content="{{ .Config.Project.Website.Keywords }}">
-    <meta name="author" content="{{ .Config.Project.Website.Author }}">
-    <meta property="og:title" content="{{ .Config.Project.Name }}">
-    <meta property="og:description" content="{{ .Config.Project.Description }}">
+    <meta name="description" content="{{ config.project.description }}">
+    <meta name="keywords" content="{{ config.project.website.keywords }}">
+    <meta name="author" content="{{ config.project.website.author }}">
+    <meta property="og:title" content="{{ config.project.name }}">
+    <meta property="og:description" content="{{ config.project.description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ .Config.Project.Website.URL }}">
+    <meta property="og:url" content="{{ config.project.website.url }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ .Config.Project.Name }}">
-    <meta name="twitter:description" content="{{ .Config.Project.Description }}">
+    <meta name="twitter:title" content="{{ config.project.name }}">
+    <meta name="twitter:description" content="{{ config.project.description }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Favicon and mobile icons -->
-    <link rel="icon" href="{{ .Config.Project.Website.Icons.Favicon }}" sizes="any">
-    <link rel="icon" href="{{ .Config.Project.Website.Icons.SVG }}" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="{{ .Config.Project.Website.Icons.Apple }}">
-    <link rel="manifest" href="{{ .Config.Project.Website.Icons.Manifest }}">
-    <meta name="theme-color" content="{{ .Config.Project.Website.ThemeColor }}">
+    <link rel="icon" href="{{ config.project.website.icons.favicon }}" sizes="any">
+    <link rel="icon" href="{{ config.project.website.icons.svg }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ config.project.website.icons.apple }}">
+    <link rel="manifest" href="{{ config.project.website.icons.manifest }}">
+    <meta name="theme-color" content="{{ config.project.website.themeColor }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <title>{{ .Config.Project.Name }}</title>
+    <title>{{ config.project.name }}</title>
     <style>
         body {
             font-family: 'JetBrains Mono', 'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
@@ -85,13 +85,13 @@
             color: #0366d6;
         }
         a {
-            color: {{ .Config.Project.Website.ThemeColor }};
+            color: {{ config.project.website.themeColor }};
             text-decoration: none;
             border-bottom: 1px dotted transparent;
             transition: border-color 0.2s ease;
         }
         a:hover {
-            border-bottom-color: {{ .Config.Project.Website.ThemeColor }};
+            border-bottom-color: {{ config.project.website.themeColor }};
             text-decoration: none;
         }
         .note {
@@ -218,11 +218,11 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "{{ .Config.Project.Name }}",
-        "description": "{{ .Config.Project.Description }}",
+        "name": "{{ config.project.name }}",
+        "description": "{{ config.project.description }}",
         "publisher": {
             "@type": "Organization",
-            "name": "{{ .Config.Project.Website.Author }}"
+            "name": "{{ config.project.website.author }}"
         },
         "license": "https://creativecommons.org/publicdomain/zero/1.0/",
         "about": {
@@ -260,17 +260,17 @@
 <body>
     <div class="container">
         <header role="banner">
-            <h1 id="awesome-aiops">{{ .Config.Project.Name }}</h1>
+            <h1 id="awesome-aiops">{{ config.project.name }}</h1>
             <nav class="main-menu">
                 <ul>
-                    <li><a href="https://github.com/{{ .Config.Project.Repository }}">GitHub</a></li>
+                    <li><a href="https://github.com/{{ config.project.repository }}">GitHub</a></li>
                 </ul>
             </nav>
             <div class="note" role="note" aria-label="Important note about this repository">
-                <strong>Note:</strong> {{ .Config.Project.Note }}
+                <strong>Note:</strong> {{ config.project.note }}
             </div>
             <div>
-                {{ .Config.Project.Description | safeHTML }}
+                {{ config.project.description | safeHTML }}
             </div>
 
             <!-- Site-wide search bar -->
@@ -283,50 +283,48 @@
 
         <nav role="navigation" aria-labelledby="toc-heading">
             <h2 id="toc-heading">Table of Contents</h2>
-            {{- define "CategoryTOC" -}}
+            {%- macro categoryTOC(cats) -%}
             <ul>
-            {{- range . }}
-                <li style="margin-left: {{ mul .Depth 15 }}px;">
-                    <a href="#{{ .Title | lower | replace " " "-" }}" aria-label="Go to {{ .Title }} section">{{ .Title }}</a> {{ if .Items -}}<span aria-label="{{ len .Items }} items">({{ len .Items }})</span>{{- end }}
-                    {{ if .Categories -}}
-                    {{ template "CategoryTOC" .Categories }}
-                    {{- end -}}
+            {%- for cat in cats %}
+                <li style="margin-left: {{ cat.depth | mul(15) }}px;">
+                    <a href="#{{ cat.title | lower | replace(" ", "-") }}" aria-label="Go to {{ cat.title }} section">{{ cat.title }}</a>{% if cat.items.length > 0 %} <span aria-label="{{ cat.items.length }} items">({{ cat.items.length }})</span>{% endif %}
+                    {%- if cat.categories.length > 0 %}
+                    {{ categoryTOC(cat.categories) }}
+                    {%- endif %}
                 </li>
-            {{ end -}}
+            {%- endfor %}
             </ul>
-            {{- end -}}
-            {{ template "CategoryTOC" .Categories }}
+            {%- endmacro -%}
+            {{ categoryTOC(categories) }}
         </nav>
 
         <main role="main">
-            {{- define "CategoryView" -}}
-            {{- range . }}
-            <section aria-labelledby="{{ .Title | lower | replace " " "-" }}">
-                {{- $headingLevel := add 2 .Depth -}}
-                {{- if gt $headingLevel 6 -}}
-                    {{- $headingLevel = 6 -}}
-                {{- end -}}
-                <h{{ $headingLevel }} id="{{ .Title | lower | replace " " "-" }}">{{ .Title }}</h{{ $headingLevel }}>
-                {{ if .Items -}}
-                <ul aria-label="List of {{ .Title }} items">
-                {{- range .Items }}
+            {%- macro categoryView(cats) -%}
+            {%- for cat in cats %}
+            <section aria-labelledby="{{ cat.title | lower | replace(" ", "-") }}">
+                {%- set headingLevel = cat.depth | add(2) -%}
+                {%- if headingLevel > 6 -%}{%- set headingLevel = 6 -%}{%- endif %}
+                <h{{ headingLevel }} id="{{ cat.title | lower | replace(" ", "-") }}">{{ cat.title }}</h{{ headingLevel }}>
+                {%- if cat.items.length > 0 %}
+                <ul aria-label="List of {{ cat.title }} items">
+                {%- for item in cat.items %}
                     <li>
-                        <a href="{{ .Link }}" aria-label="{{ .Name }} - {{ .Stars }} stars, {{ .Language }}" target="_blank" rel="noopener">{{ .Name }}</a>
-                        <span class="stars" aria-hidden="true">⭐ {{ .Stars }}</span>
-                        <span class="language" aria-hidden="true">{{ .Language }}</span> -
-                        <span>{{ .Summary }}</span>
+                        <a href="{{ item.link }}" aria-label="{{ item.name }} - {{ item.stars }} stars, {{ item.language }}" target="_blank" rel="noopener">{{ item.name }}</a>
+                        <span class="stars" aria-hidden="true">⭐ {{ item.stars }}</span>
+                        <span class="language" aria-hidden="true">{{ item.language }}</span> -
+                        <span>{{ item.summary }}</span>
                     </li>
-                {{- end }}
+                {%- endfor %}
                 </ul>
                 <p class="back-to-toc"><a href="#toc-heading">↑ Back to TOC</a></p>
-                {{- end }}
-                {{ if .Categories -}}
-                {{ template "CategoryView" .Categories }}
-                {{- end -}}
+                {%- endif %}
+                {%- if cat.categories.length > 0 %}
+                {{ categoryView(cat.categories) }}
+                {%- endif %}
             </section>
-            {{ end -}}
-            {{- end -}}
-            {{ template "CategoryView" .Categories }}
+            {%- endfor -%}
+            {%- endmacro -%}
+            {{ categoryView(categories) }}
         </main>
 
         <footer role="contentinfo">
