@@ -34,13 +34,13 @@ Table of Contents:
 
 - [centreon/centreon](https://github.com/centreon/centreon) (142 PHP) - Centreon is an open-source AIOps platform providing comprehensive monitoring and holistic visibility for complex IT workflows across cloud and edge environments.
 - [keephq/keep](https://github.com/keephq/keep) (11464 Python) - Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.
-- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (809 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
+- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (810 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
 
 ### Intelligent Monitoring Systems
 
 - [Arize-ai/openinference](https://github.com/Arize-ai/openinference) (870 Python) - OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.
-- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (8698 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
-- [lmnr-ai/lmnr](https://github.com/lmnr-ai/lmnr) (2630 TypeScript) - Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.
+- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (8700 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
+- [lmnr-ai/lmnr](https://github.com/lmnr-ai/lmnr) (2635 TypeScript) - Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.
 - [truera/trulens](https://github.com/truera/trulens) (3121 Python) - TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents to improve AI application performance and reliability.
 
 ## Observability & Monitoring
