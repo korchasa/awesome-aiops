@@ -16,11 +16,13 @@ Table of Contents:
     - [AI-Powered Automation](#ai-powered-automation) (2)
     - [Self-Healing Systems](#self-healing-systems) (1)
 - [Data & Analytics](#data-&-analytics)
-    - [Root Cause Analysis](#root-cause-analysis) (3)
+    - [Root Cause Analysis](#root-cause-analysis) (4)
     - [Anomaly Detection](#anomaly-detection) (2)
     - [Predictive Maintenance](#predictive-maintenance) (1)
 - [DevOps AI Integration](#devops-ai-integration)
     - [Testing Intelligence](#testing-intelligence) (1)
+- [Security Operations (SecOps)](#security-operations-(secops))
+    - [Security Monitoring](#security-monitoring) (1)
 - [Cloud & Infrastructure AI](#cloud-&-infrastructure-ai)
     - [Infrastructure as Code AI](#infrastructure-as-code-ai) (1)
 - [Tools & Utilities](#tools-&-utilities)
@@ -34,39 +36,39 @@ Table of Contents:
 ### Full-Stack AIOps Platforms
 
 - [centreon/centreon](https://github.com/centreon/centreon) (148 PHP) - Centreon is an open-source AIOps platform providing comprehensive monitoring and holistic visibility for complex IT workflows across cloud and edge environments.
-- [keephq/keep](https://github.com/keephq/keep) (11625 Python) - Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.
-- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (852 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
+- [keephq/keep](https://github.com/keephq/keep) (11651 Python) - Keep is an open-source AIOps and alert management platform that provides a unified interface for alert deduplication, enrichment, correlation, and automation with AI-powered capabilities and extensive integrations.
+- [microsoft/AIOpsLab](https://github.com/microsoft/AIOpsLab) (854 Python) - AIOpsLab is a holistic framework for designing, developing, and evaluating autonomous AIOps agents with support for benchmarking, fault injection, and telemetry in cloud environments.
 
 ### Intelligent Monitoring Systems
 
-- [Arize-ai/openinference](https://github.com/Arize-ai/openinference) (918 Python) - OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.
-- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (9258 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
-- [lmnr-ai/lmnr](https://github.com/lmnr-ai/lmnr) (2780 TypeScript) - Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.
-- [suzuran0y/CCTV-Smartphone-AI-Monitoring](https://github.com/suzuran0y/CCTV-Smartphone-AI-Monitoring) (549 Python) - Sentinel is a LAN-based AI monitoring framework that repurposes Android smartphones as camera nodes for distributed image acquisition, real-time video streaming, and AI-driven analysis with structu...
-- [truera/trulens](https://github.com/truera/trulens) (3241 Python) - TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents to improve AI application performance and reliability.
+- [Arize-ai/openinference](https://github.com/Arize-ai/openinference) (928 Python) - OpenInference is an OpenTelemetry-based instrumentation framework designed to enhance observability and tracing of AI applications, particularly large language models, to support AI-driven monitoring and debugging in AIOps environments.
+- [Arize-ai/phoenix](https://github.com/Arize-ai/phoenix) (9348 Jupyter Notebook) - Phoenix is an open-source AI observability platform for experimentation, evaluation, and troubleshooting of large language model applications, supporting multiple frameworks and deployment environments.
+- [lmnr-ai/lmnr](https://github.com/lmnr-ai/lmnr) (2791 TypeScript) - Laminar is an open-source observability platform designed specifically for AI agents, offering tracing, evaluation, monitoring, and data analysis tools to support AI-powered operations and workflows.
+- [suzuran0y/CCTV-Smartphone-AI-Monitoring](https://github.com/suzuran0y/CCTV-Smartphone-AI-Monitoring) (560 Python) - Sentinel is a LAN-based, AI-powered monitoring framework that repurposes Android smartphones as camera nodes for real-time video streaming and event-driven visual AI analysis.
+- [truera/trulens](https://github.com/truera/trulens) (3259 Python) - TruLens is a tool for systematic evaluation and tracking of large language model experiments and AI agents to improve AI application performance and reliability.
 
 ### Incident Management AI
 
-- [Arvo-AI/aurora](https://github.com/Arvo-AI/aurora) (130 Python) - Aurora is an open-source AI-powered incident management platform for SRE teams, using LangGraph-orchestrated agents to autonomously investigate incidents, perform root cause analysis, and suggest c...
+- [Arvo-AI/aurora](https://github.com/Arvo-AI/aurora) (143 Python) - Aurora is an open-source AI-powered incident management platform that automates incident investigation and root cause analysis across multi-cloud environments.
 
 ## Observability & Monitoring
 
 ### Log Analysis & Intelligence
 
-- [d0ng1ee/logdeep](https://github.com/d0ng1ee/logdeep) (454 Python) - LogDeep is an open-source deep learning-based toolkit for automated anomaly detection in system logs, featuring state-of-the-art models like DeepLog, LogAnomaly, and RobustLog.
-- [Jun-jie-Huang/awesome-LLM-AIOps](https://github.com/Jun-jie-Huang/awesome-LLM-AIOps) (428 ) - A curated list of academic and industrial resources focusing on the application of Large Language Models in Artificial Intelligence for IT Operations (AIOps), covering incident management, log analysis, root cause analysis, and anomaly detection.
-- [logpai/awesome-log-analysis](https://github.com/logpai/awesome-log-analysis) (791 ) - A curated repository of research and resources on log analysis, anomaly detection, fault localization, and AIOps, serving as a comprehensive knowledge hub for AI-driven IT operations.
-- [logpai/Drain3](https://github.com/logpai/Drain3) (790 Python) - Drain3 is a robust streaming log template miner that extracts and clusters log message templates in real-time using an enhanced Drain algorithm with features like masking, persistence, and memory efficiency.
+- [d0ng1ee/logdeep](https://github.com/d0ng1ee/logdeep) (455 Python) - LogDeep is an open-source deep learning-based toolkit for automated anomaly detection in system logs, featuring state-of-the-art models like DeepLog, LogAnomaly, and RobustLog.
+- [Jun-jie-Huang/awesome-LLM-AIOps](https://github.com/Jun-jie-Huang/awesome-LLM-AIOps) (431 ) - A curated list of academic and industrial resources focusing on the application of Large Language Models in Artificial Intelligence for IT Operations (AIOps), covering incident management, log analysis, root cause analysis, and anomaly detection.
+- [logpai/awesome-log-analysis](https://github.com/logpai/awesome-log-analysis) (793 ) - A curated repository of research and resources on log analysis, anomaly detection, fault localization, and AIOps, serving as a comprehensive knowledge hub for AI-driven IT operations.
+- [logpai/Drain3](https://github.com/logpai/Drain3) (794 Python) - Drain3 is a robust streaming log template miner that extracts and clusters log message templates in real-time using an enhanced Drain algorithm with features like masking, persistence, and memory efficiency.
 - [logpai/Log3C](https://github.com/logpai/Log3C) (175 Python) - Log3C is a machine learning-based framework that identifies impactful service system problems by analyzing system logs and correlating them with KPI metrics using cascading clustering and sequence vectorization.
 - [logpai/loglizer](https://github.com/logpai/loglizer) (1413 Jupyter Notebook) - Loglizer is a machine learning-based toolkit for automated anomaly detection in system logs, enabling AI-powered IT operations through advanced log analysis.
-- [salesforce/logai](https://github.com/salesforce/logai) (788 Python) - LogAI is an open-source library for AI-powered log analytics and anomaly detection, providing a unified platform with advanced machine learning and deep learning models along with an interactive GUI for comprehensive log intelligence.
+- [salesforce/logai](https://github.com/salesforce/logai) (789 Python) - LogAI is an open-source library for AI-powered log analytics and anomaly detection, providing a unified platform with advanced machine learning and deep learning models along with an interactive GUI for comprehensive log intelligence.
 
 ## Automation & Orchestration
 
 ### AI-Powered Automation
 
 - [IBM/cloud-pak-deployer](https://github.com/IBM/cloud-pak-deployer) (155 Jinja) - IBM Cloud Pak Deployer is an automation tool for configuration-based installation and continuous management of OpenShift and IBM Cloud Paks, including Watson AIOps, across various cloud infrastructures.
-- [Idun-Group/idun-agent-platform](https://github.com/Idun-Group/idun-agent-platform) (141 TypeScript) - An open-source platform to make LangGraph/ADK AI agents production-ready with governance, observability, and security features.
+- [Idun-Group/idun-agent-platform](https://github.com/Idun-Group/idun-agent-platform) (158 TypeScript) - An open-source platform to make LangGraph/ADK AI agents production-ready with governance, observability, and security features.
 
 ### Self-Healing Systems
 
@@ -76,24 +78,31 @@ Table of Contents:
 
 ### Root Cause Analysis
 
-- [codefuse-ai/codefuse-devops-eval](https://github.com/codefuse-ai/codefuse-devops-eval) (652 Python) - An industrial-first evaluation benchmark and comprehensive suite for assessing large language models in the DevOps and AIOps domain, featuring extensive datasets and leaderboards for model performance tracking.
-- [HolmesGPT/holmesgpt](https://github.com/HolmesGPT/holmesgpt) (2200 Python) - HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to automate root cause analysis and remediation suggestions, enhancing incident response and operational efficiency.
-- [phamquiluan/RCAEval](https://github.com/phamquiluan/RCAEval) (119 Jupyter Notebook) - RCAEval is an open-source benchmark and evaluation framework providing datasets and baseline methods for root cause analysis in microservice systems, supporting metric, trace, and multi-source data for AI-powered DevOps and AIOps applications.
+- [codefuse-ai/codefuse-devops-eval](https://github.com/codefuse-ai/codefuse-devops-eval) (653 Python) - An industrial-first evaluation benchmark and comprehensive suite for assessing large language models in the DevOps and AIOps domain, featuring extensive datasets and leaderboards for model performance tracking.
+- [HolmesGPT/holmesgpt](https://github.com/HolmesGPT/holmesgpt) (2240 Python) - HolmesGPT is an AI agent for cloud troubleshooting and alert investigation that integrates with multiple observability and cloud platforms to automate root cause analysis and remediation suggestions, enhancing incident response and operational efficiency.
+- [phamquiluan/RCAEval](https://github.com/phamquiluan/RCAEval) (125 Jupyter Notebook) - RCAEval is an open-source benchmark and evaluation framework providing datasets and baseline methods for root cause analysis in microservice systems, supporting metric, trace, and multi-source data for AI-powered DevOps and AIOps applications.
+- [scitix/siclaw](https://github.com/scitix/siclaw) (130 TypeScript) - Siclaw is an open-source AI-powered SRE agent designed for read-only infrastructure diagnostics, providing deep investigation, root cause analysis, and collaborative workflows for DevOps and SRE te...
 
 ### Anomaly Detection
 
-- [CloudWise-OpenSource/GAIA-DataSet](https://github.com/CloudWise-OpenSource/GAIA-DataSet) (272 ) - GAIA is a comprehensive AIOps dataset designed for analyzing IT operation problems such as anomaly detection, log analysis, and fault localization using real-world-like simulation data and companion anonymized data.
+- [CloudWise-OpenSource/GAIA-DataSet](https://github.com/CloudWise-OpenSource/GAIA-DataSet) (273 ) - GAIA is a comprehensive AIOps dataset designed for analyzing IT operation problems such as anomaly detection, log analysis, and fault localization using real-world-like simulation data and companion anonymized data.
 - [jixinpu/aiopstools](https://github.com/jixinpu/aiopstools) (395 Python) - Aiopstools is a Python-based toolkit providing AI-powered modules for anomaly detection, alarm convergence, time series forecasting, and association analysis to enhance IT operations.
 
 ### Predictive Maintenance
 
-- [aqstack/sentinel](https://github.com/aqstack/sentinel) (364 Go) - Sentinel is an AI-powered self-healing edge computing agent for Kubernetes that predicts failures, enables autonomous operation during network partitions, and orchestrates workload migrations to enhance edge node reliability and resilience.
+- [aqstack/sentinel](https://github.com/aqstack/sentinel) (365 Go) - Sentinel is an AI-powered self-healing edge computing agent for Kubernetes that predicts failures, enables autonomous operation during network partitions, and orchestrates workload migrations to enhance edge node reliability and resilience.
 
 ## DevOps AI Integration
 
 ### Testing Intelligence
 
 - [athina-ai/athina-sdk](https://github.com/athina-ai/athina-sdk) (132 Python) - Athina SDK is a testing and observability platform that helps developers write tests and monitor the performance and reliability of large language model applications in production.
+
+## Security Operations (SecOps)
+
+### Security Monitoring
+
+- [pegasi-ai/reins](https://github.com/pegasi-ai/reins) (383 Python) - ClawReins provides runtime security for OpenClaw agents, offering scanning, fixing, and continuous monitoring to prevent malicious or unintended agent actions.
 
 ## Cloud & Infrastructure AI
 
@@ -105,11 +114,11 @@ Table of Contents:
 
 ### Visualization & Dashboards
 
-- [evilmartians/agent-prism](https://github.com/evilmartians/agent-prism) (326 TypeScript) - AgentPrism is an open-source React library that visualizes AI agent traces to help debug and understand agent workflows through interactive and hierarchical timelines integrated with OpenTelemetry data.
+- [evilmartians/agent-prism](https://github.com/evilmartians/agent-prism) (327 TypeScript) - AgentPrism is an open-source React library that visualizes AI agent traces to help debug and understand agent workflows through interactive and hierarchical timelines integrated with OpenTelemetry data.
 
 ## Educational Resources
 
-- [OpsPAI/awesome-AIOps](https://github.com/OpsPAI/awesome-AIOps) (309 ) - A curated repository of academic research and industrial resources focused on Artificial Intelligence for IT Operations (AIOps), supporting AI-powered DevOps and infrastructure management.
+- [OpsPAI/awesome-AIOps](https://github.com/OpsPAI/awesome-AIOps) (310 ) - A curated repository of academic research and industrial resources focused on Artificial Intelligence for IT Operations (AIOps), supporting AI-powered DevOps and infrastructure management.
 
 
 ## License
